@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 import useAuth from "../Hooks/useAuth";
 import GoogleLogin from "./GoogleLogin";
@@ -15,6 +15,8 @@ const Register = () => {
   } = useForm();
 
   const { registerUser, updateUserProfile } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleRegister = (data) => {
     // console.log(data);
@@ -38,7 +40,9 @@ const Register = () => {
             photoURL: res.data.data.url,
           };
           updateUserProfile(userProfile)
-            .then()
+            .then(() => {
+              navigate(location.state || "/");
+            })
             .catch((error) => console.log(error));
         });
       })

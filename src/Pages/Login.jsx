@@ -2,7 +2,7 @@ import React from "react";
 
 import { useForm } from "react-hook-form";
 import useAuth from "../Hooks/useAuth";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import GoogleLogin from "./GoogleLogin";
 
 const Login = () => {
@@ -13,15 +13,15 @@ const Login = () => {
   } = useForm();
 
   const { signUser } = useAuth();
-  //   const location = useLocation();
-  //   const navigate = useNavigate();
-  // console.log("location in the log in page", location);
+    const location = useLocation();
+    const navigate = useNavigate();
+  
 
   const handleLogin = (data) => {
     console.log(data);
     signUser(data.email, data.password)
       .then((result) => {
-        alert("Login succesful");
+        alert("Login successful");
         console.log(result.user);
         navigate(location?.state || "/");
       })

@@ -4,6 +4,9 @@ import Home from "../Pages/Home/Home";
 import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import Upgrade from "../Pages/Upgrade";
+import Error from "../Pages/Share/Error";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +16,18 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+      },
+      {
+        path: "upgrade",
+        element: (
+          <PrivateRoute>
+            <Upgrade></Upgrade>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "*",
+        Component: Error,
       },
     ],
   },
@@ -27,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: "register",
         Component: Register,
+      },
+      {
+        path: "*",
+        Component: Error,
       },
     ],
   },

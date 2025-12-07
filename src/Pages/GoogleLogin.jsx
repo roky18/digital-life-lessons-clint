@@ -1,14 +1,18 @@
 import React from "react";
 
 import useAuth from "../Hooks/useAuth";
+import { useLocation, useNavigate } from "react-router";
 
 const GoogleLogin = () => {
   const { signInGoogle } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleGoogleSign = () => {
     signInGoogle()
       .then((result) => {
         console.log(result.user);
+        navigate(location.state || "/");
       })
       .catch((error) => {
         console.log(error);
@@ -17,11 +21,7 @@ const GoogleLogin = () => {
 
   return (
     <div className="text-center pb-8">
-     
-      <button
-        onClick={handleGoogleSign}
-        className="btn  btn-outline w-10/12"
-      >
+      <button onClick={handleGoogleSign} className="btn  btn-outline w-10/12">
         <svg
           aria-label="Google logo"
           width="16"
