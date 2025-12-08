@@ -7,6 +7,9 @@ import Register from "../Pages/Register";
 import Upgrade from "../Pages/Upgrade";
 import Error from "../Pages/Share/Error";
 import PrivateRoute from "./PrivateRoute";
+import AddLesson from "../Pages/AddLesson";
+import MyLessons from "../Pages/MyLessons";
+import PublicLessons from "../Pages/PublicLessons";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +27,26 @@ export const router = createBrowserRouter([
             <Upgrade></Upgrade>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "add-lesson",
+        element: (
+          <PrivateRoute>
+            <AddLesson></AddLesson>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-lessons",
+        element: (
+          <PrivateRoute>
+            <MyLessons></MyLessons>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "public-lessons",
+        Component: PublicLessons,
       },
       {
         path: "*",

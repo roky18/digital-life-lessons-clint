@@ -1,10 +1,11 @@
 import React from "react";
 
-const Upgrade = () => {
+const PublicLessons = () => {
   return <div className="w-11/12 mx-auto">
     
-    updateeeeee
+    pbleeee
+    
     </div>;
 };
 
-export default Upgrade;
+export default PublicLessons;

@@ -2,7 +2,7 @@ import React from "react";
 
 const WhyLearning = () => {
   return (
-    <div className="w-11/12 rounded-xl mx-auto bg-amber-50 my-8 mb-16">
+    <div className=" rounded-xl bg-amber-50 my-8 mb-16">
       <div className="p-6">
         <div className="text-center w-80 mx-auto">
           <h3 className="text-primary font-semibold mb-8 text-3xl">
@@ -10,7 +10,7 @@ const WhyLearning = () => {
           </h3>
         </div>
         <section className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* -->>>>>>>>> */}
+          {/* ---------------> */}
           <div className="bg-green-100 hover:scale-115 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
             <img className="w-8 rounded-full  " src="" alt="" />
             <h4 className=" font-semibold">
@@ -23,7 +23,7 @@ const WhyLearning = () => {
               growth more meaningful.
             </p>
           </div>
-          {/* -->>>>>>>>> */}
+          {/* ---------------> */}
           <div className="bg-green-100 hover:scale-115 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
             <img className="w-8 rounded-full  " src="" alt="" />
             <h4 className="font-semibold">
@@ -36,7 +36,7 @@ const WhyLearning = () => {
               difficult situations.
             </p>
           </div>
-          {/* -->>>>>>>>> */}
+          {/* ---------------> */}
           <div className="bg-green-100 hover:scale-115 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
             <img className="w-8 rounded-full  " src="" alt="" />
             <h4 className="font-semibold">
@@ -49,7 +49,7 @@ const WhyLearning = () => {
               personal improvement and resilience.
             </p>
           </div>
-          {/* -->>>>>>>>> */}
+          {/* ---------------> */}
           <div className="bg-green-100 hover:scale-115 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
             <img className="w-8 rounded-full  " src="" alt="" />
             <h4 className="font-semibold">Inspires Others Around You</h4>
@@ -62,7 +62,7 @@ const WhyLearning = () => {
             </p>
           </div>
 
-          {/* -->>>>>>>>> */}
+          {/* ---------------> */}
         </section>
       </div>
     </div>

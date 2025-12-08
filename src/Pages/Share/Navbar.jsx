@@ -19,28 +19,30 @@ const Navbar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
+
       <li>
-        <NavLink to="/dashboard/add-lesson">Add Lesson</NavLink>
+        <NavLink to="/add-lesson">Add Lesson</NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard/my-lessons">My Lessons</NavLink>
+        <NavLink to="/my-lessons">My Lessons</NavLink>
       </li>
+
+      {/* {user && (
+        <>
+          <li>
+            <NavLink to="/add-lesson">Add Lesson</NavLink>
+          </li>
+          <li>
+            <NavLink to="/my-lessons">My Lessons</NavLink>
+          </li>
+        </>
+      )} */}
       <li>
         <NavLink to="/public-lessons">Public Lessons</NavLink>
       </li>
       <li>
         <NavLink to="/upgrade">Upgrade</NavLink>
       </li>
-      {/* {user && (
-        <>
-          <li>
-            <NavLink to="/dashboard/add-lesson">Add Lesson</NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/my-lessons">My Lessons</NavLink>
-          </li>
-        </>
-      )} */}
     </>
   );
   return (

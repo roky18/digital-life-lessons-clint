@@ -19,5 +19,5 @@ body {
 }
 
 .active {
-  @apply text-green-500 font-bold;
+  @apply text-primary font-bold;
 }

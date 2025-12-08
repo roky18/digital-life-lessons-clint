@@ -7,7 +7,11 @@ import baner3 from "../../assets/banner3.jpg";
 
 const Banner = () => {
   return (
-    <Carousel className="w-11/12 mx-auto my-6" autoPlay={true} infiniteLoop={true}>
+    <Carousel
+      className="w-11/12 mx-auto my-6"
+      autoPlay={true}
+      infiniteLoop={true}
+    >
       <div>
         <img src={baner1} />
         <p className="legend">Digital Life Lessons 1</p>

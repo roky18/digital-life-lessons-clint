@@ -57,7 +57,7 @@ const Login = () => {
             placeholder="Password"
           />
           {errors.password?.type === "minLength" && (
-            <p className="text-red-500">Minimun 6 charecter.</p>
+            <p className="text-red-500">Minimum 6 Character.</p>
           )}
           <div>
             <a className="link link-hover">Forgot password?</a>

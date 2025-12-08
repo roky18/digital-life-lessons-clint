@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const Error = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-red-100 via-red-200 to-red-300 px-4">
+    <div className="w-11/12 mx-auto flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-red-100 via-red-200 to-red-300 px-4">
       <div className="bg-white shadow-2xl rounded-3xl p-8 md:p-16 text-center w-full max-w-md">
         <h1 className="text-6xl md:text-8xl font-extrabold text-red-600 mb-4 animate-pulse">
           404
