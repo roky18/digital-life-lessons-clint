@@ -2,6 +2,8 @@ import React from "react";
 import Banner from "./Banner";
 import FeaturedLessons from "./FeaturedLessons";
 import WhyLearning from "./WhyLearning";
+import MostSavedLessons from "./MostSavedLessons";
+import TopContributors from "./TopContributors";
 
 const Home = () => {
   return (
@@ -9,7 +11,8 @@ const Home = () => {
       <Banner></Banner>
       <FeaturedLessons></FeaturedLessons>
       <WhyLearning></WhyLearning>
-      this is home
+      <TopContributors></TopContributors>
+      <MostSavedLessons></MostSavedLessons>
     </div>
   );
 };

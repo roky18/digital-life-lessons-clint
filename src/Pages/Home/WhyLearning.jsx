@@ -1,9 +1,13 @@
 import React from "react";
+import Wl1 from "../../assets/Wl-1.jpg";
+import Wl2 from "../../assets/Wl-2.jpg";
+import Wl3 from "../../assets/Wl-3.jpg";
+import Wl4 from "../../assets/Wl-4.jpg";
 
 const WhyLearning = () => {
   return (
-    <div className=" rounded-xl bg-amber-50 my-8 mb-16">
-      <div className="p-6">
+    <div className=" rounded-xl  my-8 mb-16">
+      <div className="p-10 shadow-2xl rounded-2xl">
         <div className="text-center w-80 mx-auto">
           <h3 className="text-primary font-semibold mb-8 text-3xl">
             Why Learning From Life Matters
@@ -11,8 +15,8 @@ const WhyLearning = () => {
         </div>
         <section className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* ---------------> */}
-          <div className="bg-green-100 hover:scale-115 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
-            <img className="w-8 rounded-full  " src="" alt="" />
+          <div className="bg-orange-100 hover:scale-110 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
+            <img className=" rounded-2xl object-cover  " src={Wl1} alt="" />
             <h4 className=" font-semibold">
               Helps You Understand Yourself Better
             </h4>
@@ -24,8 +28,8 @@ const WhyLearning = () => {
             </p>
           </div>
           {/* ---------------> */}
-          <div className="bg-green-100 hover:scale-115 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
-            <img className="w-8 rounded-full  " src="" alt="" />
+          <div className="bg-orange-100 hover:scale-110 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
+            <img className=" rounded-2xl object-cover  " src={Wl2} alt="" />
             <h4 className="font-semibold">
               Makes Future Decision-Making Easier
             </h4>
@@ -37,8 +41,8 @@ const WhyLearning = () => {
             </p>
           </div>
           {/* ---------------> */}
-          <div className="bg-green-100 hover:scale-115 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
-            <img className="w-8 rounded-full  " src="" alt="" />
+          <div className="bg-orange-100 hover:scale-110 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
+            <img className=" rounded-2xl object-cover  " src={Wl3} alt="" />
             <h4 className="font-semibold">
               Reduces Repeating the Same Mistakes
             </h4>
@@ -50,8 +54,8 @@ const WhyLearning = () => {
             </p>
           </div>
           {/* ---------------> */}
-          <div className="bg-green-100 hover:scale-115 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
-            <img className="w-8 rounded-full  " src="" alt="" />
+          <div className="bg-orange-100 hover:scale-110 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
+            <img className=" rounded-2xl object-cover  " src={Wl4} alt="" />
             <h4 className="font-semibold">Inspires Others Around You</h4>
             <p className="text-gray-500 text-xs">
               Your life lessons can motivate others by showing real examples of

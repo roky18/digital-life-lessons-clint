@@ -6,7 +6,7 @@ const FeaturedLessons = () => {
       <h3 className="text-primary text-center font-semibold mb-10 text-3xl">
         Featured Life Lessons
       </h3>
-      <section className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <section className=" p-10 shadow-2xl rounded-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* ---------->> */}
         <div className="bg-pink-200 hover:bg-amber-200 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
           <img className="w-8 rounded-full  " src="" alt="" />

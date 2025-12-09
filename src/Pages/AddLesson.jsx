@@ -2,14 +2,34 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { FaRegImages } from "react-icons/fa";
 import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const AddLesson = () => {
   const { user } = useAuth();
   const userType = user?.role;
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
+  const handleAddLesson = (data) => {
     console.log("lesson Created:", data);
+    Swal.fire({
+      title: "Are You Agree with Create Lesson?",
+      text: `Your Lesson will be Posting!`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes,Confirm!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Lesson has created.",
+          showConfirmButton: false,
+          timer: 2500,
+        });
+      }
+    });
   };
 
   return (
@@ -19,7 +39,7 @@ const AddLesson = () => {
       </h3>
 
       <div className="bg-base-200 shadow-2xl  py-8 px-12 rounded-2xl space-y-6">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={handleSubmit(handleAddLesson)} className="space-y-6">
           {/* Title */}
           <div className="form-control">
             <label className="text-indigo-600 font-semibold">
@@ -29,7 +49,7 @@ const AddLesson = () => {
               {...register("title", { required: true })}
               type="text"
               placeholder="Enter lesson title"
-              className="input input-bordered mt-2"
+              className="input md:w-11/12 input-bordered mt-2"
             />
           </div>
 
@@ -40,7 +60,7 @@ const AddLesson = () => {
             </label>
             <textarea
               {...register("description", { required: true })}
-              className="textarea textarea-bordered mt-2 h-32"
+              className="textarea textarea-bordered mt-2 h-32  md:w-11/12"
               placeholder="Write your story or insight..."
             ></textarea>
           </div>
