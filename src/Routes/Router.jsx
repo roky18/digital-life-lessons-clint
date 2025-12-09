@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddLesson from "../Pages/AddLesson";
 import MyLessons from "../Pages/MyLessons";
 import PublicLessons from "../Pages/PublicLessons";
+import DashboardLayout from "../Layouts/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -33,14 +34,6 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddLesson></AddLesson>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "my-lessons",
-        element: (
-          <PrivateRoute>
-            <MyLessons></MyLessons>
           </PrivateRoute>
         ),
       },
@@ -69,6 +62,20 @@ export const router = createBrowserRouter([
       {
         path: "*",
         Component: Error,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "my-lessons",
+        Component: MyLessons,
       },
     ],
   },

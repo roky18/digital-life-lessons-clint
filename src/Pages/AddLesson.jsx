@@ -40,7 +40,11 @@ const AddLesson = () => {
       const res = await axios.post(imageApi, formData);
       const imageUrl = res.data.data.url;
 
-      const lessonData = { ...data, image: imageUrl };
+      const lessonData = {
+        ...data,
+        image: imageUrl,
+        lessonerEmail: user?.email,
+      };
 
       // Save to img data ibb ---<
 

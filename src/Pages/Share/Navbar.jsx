@@ -23,20 +23,17 @@ const Navbar = () => {
       <li>
         <NavLink to="/add-lesson">Add Lesson</NavLink>
       </li>
-      <li>
-        <NavLink to="/my-lessons">My Lessons</NavLink>
-      </li>
 
-      {/* {user && (
+      {user && (
         <>
-          <li>
+          {/* <li>
             <NavLink to="/add-lesson">Add Lesson</NavLink>
-          </li>
+          </li> */}
           <li>
-            <NavLink to="/my-lessons">My Lessons</NavLink>
+            <NavLink to="/dashboard/my-lessons">My Lessons</NavLink>
           </li>
         </>
-      )} */}
+      )}
       <li>
         <NavLink to="/public-lessons">Public Lessons</NavLink>
       </li>
