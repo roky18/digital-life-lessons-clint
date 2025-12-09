@@ -3,33 +3,62 @@ import { useForm } from "react-hook-form";
 import { FaRegImages } from "react-icons/fa";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import axios from "axios";
 
 const AddLesson = () => {
   const { user } = useAuth();
   const userType = user?.role;
   const { register, handleSubmit } = useForm();
 
-  const handleAddLesson = (data) => {
-    console.log("lesson Created:", data);
-    Swal.fire({
-      title: "Are You Agree with Create Lesson?",
-      text: `Your Lesson will be Posting!`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes,Confirm!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          position: "top-center",
-          icon: "success",
-          title: "Lesson has created.",
-          showConfirmButton: false,
-          timer: 2500,
-        });
-      }
-    });
+  const axiosSecure = useAxiosSecure();
+
+  const handleAddLesson = async (data) => {
+    try {
+      console.log("lesson Created:", data);
+      const result = await Swal.fire({
+        title: "Are You Agree with Create Lesson?",
+        text: `Your Lesson will be Posting!`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes,Confirm!",
+      });
+      if (!result.isConfirmed) return;
+      // Save to data in MongoDB--->
+
+      // Save to img data ibb --->
+      const lessonImg = data.image[0];
+
+      const formData = new FormData();
+      formData.append("image", lessonImg);
+
+      const imageApi = `https://api.imgbb.com/1/upload?key=${
+        import.meta.env.VITE_Image_host
+      }`;
+      const res = await axios.post(imageApi, formData);
+      const imageUrl = res.data.data.url;
+
+      const lessonData = { ...data, image: imageUrl };
+
+      // Save to img data ibb ---<
+
+      const mongoDBres = await axiosSecure.post("/lessons", lessonData);
+      console.log("after lesson post & save to MongoDB", mongoDBres.data);
+
+      // Save to data in MongoDB---<
+
+      await Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Lesson has created.",
+        showConfirmButton: false,
+        timer: 2500,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -42,7 +71,7 @@ const AddLesson = () => {
         <form onSubmit={handleSubmit(handleAddLesson)} className="space-y-6">
           {/* Title */}
           <div className="form-control">
-            <label className="text-indigo-600 font-semibold">
+            <label className="text-indigo-700 font-semibold">
               Lesson Title <br />
             </label>
             <input
@@ -55,7 +84,7 @@ const AddLesson = () => {
 
           {/* Description */}
           <div className="form-control">
-            <label className=" text-indigo-600 font-semibold">
+            <label className=" text-indigo-700 font-semibold">
               Full Story <br />
             </label>
             <textarea
@@ -67,7 +96,7 @@ const AddLesson = () => {
 
           {/* Category */}
           <div className="form-control">
-            <label className="font-semibold text-indigo-600">
+            <label className="font-semibold text-indigo-700">
               Category <br />
             </label>
             <select
@@ -85,7 +114,7 @@ const AddLesson = () => {
 
           {/* Tone */}
           <div className="form-control">
-            <label className="font-semibold text-indigo-600">
+            <label className="font-semibold text-indigo-700">
               Emotional Tone <br />
             </label>
             <select
@@ -102,7 +131,7 @@ const AddLesson = () => {
 
           {/* Image */}
           <div className="form-control">
-            <label className="font-semibold text-indigo-600 flex items-center gap-2">
+            <label className="font-semibold text-indigo-700 flex items-center gap-2">
               <FaRegImages /> Image
             </label>
             <input
@@ -114,7 +143,7 @@ const AddLesson = () => {
 
           {/* Privacy */}
           <div className="form-control">
-            <label className="font-semibold text-indigo-600">
+            <label className="font-semibold text-indigo-700">
               Privacy <br />
             </label>
             <select
@@ -129,7 +158,7 @@ const AddLesson = () => {
 
           {/* Access */}
           <div className="form-control">
-            <label className="font-semibold text-indigo-600">
+            <label className="font-semibold text-indigo-700">
               Access Level
             </label>
 
