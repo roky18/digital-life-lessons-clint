@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../Hooks/useAuth";
 import GoogleLogin from "./GoogleLogin";
 import axios from "axios";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const Register = () => {
   const {
@@ -17,6 +18,7 @@ const Register = () => {
   const { registerUser, updateUserProfile } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
 
   const handleRegister = (data) => {
     // console.log(data);
@@ -33,11 +35,24 @@ const Register = () => {
         }`;
 
         axios.post(imageAPi, formData).then((res) => {
-          console.log("image uploaded ibb", res.data.data.url);
+          const photoURL = res.data.data.url;
+
+          // create user in db--->>>
+          const userInfo = {
+            email: data.email,
+            displayName: data.name,
+            photoURL: photoURL,
+          };
+          axiosSecure.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log("user create in db");
+            }
+          });
+          // create user in db---<<<
 
           const userProfile = {
             displayName: data.name,
-            photoURL: res.data.data.url,
+            photoURL: photoURL,
           };
           updateUserProfile(userProfile)
             .then(() => {

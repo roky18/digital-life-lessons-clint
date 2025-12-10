@@ -6,7 +6,7 @@ import { Link } from "react-router";
 const FeaturedLessons = () => {
   const axiosSecure = useAxiosSecure();
 
- const { data: lessons = [] } = useQuery({
+  const { data: lessons = [] } = useQuery({
     queryKey: ["featuredLessons"],
     queryFn: async () => {
       const res = await axiosSecure.get("/lessons");
@@ -14,17 +14,17 @@ const FeaturedLessons = () => {
     },
   });
 
-  // last 6 lessons (latest)
-  const latestSix = [...lessons].slice(-6).reverse();
+  const latestSix = [...lessons]
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    .slice(0, 6);
 
   return (
     <div className="w-11/12 mx-auto my-6 mb-16">
       <h3 className="text-primary text-center font-semibold mb-10 text-3xl">
-        Featured Life Lessons (Latest 6)
+        Featured Life Lessons (Recent 6)
       </h3>
 
       <section className="p-10 shadow-2xl rounded-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
         {latestSix.map((lesson) => (
           <div
             key={lesson._id}
@@ -44,7 +44,7 @@ const FeaturedLessons = () => {
 
             {/* Description */}
             <p className="text-gray-600 text-sm">
-              {lesson.description?.slice(0, 80)}...
+              {lesson.description?.slice(0, 40)}...
             </p>
 
             {/* Category*/}
@@ -62,7 +62,6 @@ const FeaturedLessons = () => {
             </Link>
           </div>
         ))}
-
       </section>
     </div>
   );

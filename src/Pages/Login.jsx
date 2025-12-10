@@ -70,7 +70,7 @@ const Login = () => {
         </fieldset>
         <div>
           <p className="text-center ">
-            New to Zap Shift?
+            New to Digital Life Lesson?
             <Link state={location.state} to="/register">
               <span className="hover:font-bold text-blue-500"> Register</span>
             </Link>

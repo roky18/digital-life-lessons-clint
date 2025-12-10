@@ -11,6 +11,7 @@ import AddLesson from "../Pages/AddLesson";
 import MyLessons from "../Pages/MyLessons";
 import PublicLessons from "../Pages/PublicLessons";
 import DashboardLayout from "../Layouts/DashboardLayout";
+import Payment from "../Pages/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
       {
         path: "add-lessons",
         Component: AddLesson,
+      },
+      {
+        path: "payment",
+        Component: Payment,
       },
       {
         path: "*",

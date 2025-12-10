@@ -5,7 +5,7 @@ import Logo from "./Logo";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 w-11/12 mx-auto text-gray-200 py-8">
+    <footer className="bg-gray-900 w-12/12 mx-auto text-gray-200 py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
           <div className="flex flex-col md:flex-row items-center ">
