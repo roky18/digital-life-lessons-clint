@@ -15,7 +15,7 @@ const WhyLearning = () => {
         </div>
         <section className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* ---------------> */}
-          <div className="bg-orange-100 hover:scale-110 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
+          <div className="bg-orange-100 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out hover:bg-cyan-200 hover:scale-105">
             <img className=" rounded-2xl object-cover  " src={Wl1} alt="" />
             <h4 className=" font-semibold">
               Helps You Understand Yourself Better
@@ -28,7 +28,7 @@ const WhyLearning = () => {
             </p>
           </div>
           {/* ---------------> */}
-          <div className="bg-orange-100 hover:scale-110 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
+          <div className="bg-orange-100 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out hover:bg-cyan-200 hover:scale-105">
             <img className=" rounded-2xl object-cover  " src={Wl2} alt="" />
             <h4 className="font-semibold">
               Makes Future Decision-Making Easier
@@ -41,7 +41,7 @@ const WhyLearning = () => {
             </p>
           </div>
           {/* ---------------> */}
-          <div className="bg-orange-100 hover:scale-110 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
+          <div className="bg-orange-100 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out hover:bg-cyan-200 hover:scale-105">
             <img className=" rounded-2xl object-cover  " src={Wl3} alt="" />
             <h4 className="font-semibold">
               Reduces Repeating the Same Mistakes
@@ -54,7 +54,7 @@ const WhyLearning = () => {
             </p>
           </div>
           {/* ---------------> */}
-          <div className="bg-orange-100 hover:scale-110 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
+          <div className="bg-orange-100 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out hover:bg-cyan-200 hover:scale-105">
             <img className=" rounded-2xl object-cover  " src={Wl4} alt="" />
             <h4 className="font-semibold">Inspires Others Around You</h4>
             <p className="text-gray-500 text-xs">

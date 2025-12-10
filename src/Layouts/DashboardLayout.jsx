@@ -1,5 +1,5 @@
 import React from "react";
-import { MdPlayLesson } from "react-icons/md";
+import { MdAssignmentAdd, MdPlayLesson } from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router";
 
 const DashboardLayout = () => {
@@ -80,6 +80,14 @@ const DashboardLayout = () => {
               >
                 <MdPlayLesson />
                 <span className="is-drawer-close:hidden">My Lessons</span>
+              </NavLink>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="AddLessons"
+                to="/dashboard/add-lessons"
+              >
+                <MdAssignmentAdd />
+                <span className="is-drawer-close:hidden">Add Lessons</span>
               </NavLink>
             </li>
             {/* List item */}

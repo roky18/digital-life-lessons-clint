@@ -50,7 +50,7 @@ const MyLessons = () => {
     });
   };
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="w-11/12 mx-auto mb-8 py-5 shadow-2xl">
       <h3 className="text-primary text-center font-semibold my-6 mb-10 text-3xl">
         All of my Lessons : {lessons.length}
       </h3>

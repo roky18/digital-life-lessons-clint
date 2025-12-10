@@ -22,24 +22,16 @@ export const router = createBrowserRouter([
         Component: Home,
       },
       {
+        path: "public-lessons",
+        Component: PublicLessons,
+      },
+      {
         path: "upgrade",
         element: (
           <PrivateRoute>
             <Upgrade></Upgrade>
           </PrivateRoute>
         ),
-      },
-      {
-        path: "add-lesson",
-        element: (
-          <PrivateRoute>
-            <AddLesson></AddLesson>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "public-lessons",
-        Component: PublicLessons,
       },
       {
         path: "*",
@@ -76,6 +68,14 @@ export const router = createBrowserRouter([
       {
         path: "my-lessons",
         Component: MyLessons,
+      },
+      {
+        path: "add-lessons",
+        Component: AddLesson,
+      },
+      {
+        path: "*",
+        Component: Error,
       },
     ],
   },
