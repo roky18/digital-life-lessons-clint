@@ -86,7 +86,11 @@ const Navbar = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-12 rounded-full">
-                <img src={user.photoURL} alt="User" />
+                <img
+                  referrerPolicy="no-referrer"
+                  src={user.photoURL}
+                  alt="User"
+                />
               </div>
             </div>
 

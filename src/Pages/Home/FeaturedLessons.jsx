@@ -21,40 +21,6 @@ const FeaturedLessons = () => {
           </p>
         </div>
         {/* ---------->> */}
-        <div className="bg-pink-200 hover:bg-amber-200 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
-          <img className="w-8 rounded-full  " src="" alt="" />
-          <h4 className="font-semibold">Makes Future Decision-Making Easier</h4>
-          <p className="text-gray-500 text-xs">
-            Learning from past experiences gives you clarity about what works
-            and what doesn't. It helps you avoid confusion, choose wisely, stay
-            focused on your goals, and make confident decisions in difficult
-            situations.
-          </p>
-        </div>
-        {/* ---------->> */}
-        <div className="bg-pink-200 hover:bg-amber-200 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
-          <img className="w-8 rounded-full  " src="" alt="" />
-          <h4 className="font-semibold">Reduces Repeating the Same Mistakes</h4>
-          <p className="text-gray-500 text-xs">
-            Reflecting on past mistakes helps you learn valuable lessons,
-            understand consequences, and make wiser choices. This awareness
-            prevents repeating harmful patterns and leads to continuous personal
-            improvement and resilience.
-          </p>
-        </div>
-        {/* ---------->>> */}
-        <div className="bg-pink-200 hover:bg-amber-200 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-xl ">
-          <img className="w-8 rounded-full  " src="" alt="" />
-          <h4 className="font-semibold">Inspires Others Around You</h4>
-          <p className="text-gray-500 text-xs">
-            Your life lessons can motivate others by showing real examples of
-            growth, courage, and wisdom. Sharing,and make wiser choices. This
-            awareness prevents experiences encourages people to stay strong,
-            learn, and make Sharing experiences positive changes in their own
-            journeys.
-          </p>
-        </div>
-        {/*---------->> */}
       </section>
     </div>
   );

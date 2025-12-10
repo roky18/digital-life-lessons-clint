@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useForm } from "react-hook-form";
 import useAuth from "../Hooks/useAuth";
@@ -6,6 +6,8 @@ import { Link, useLocation, useNavigate } from "react-router";
 import GoogleLogin from "./GoogleLogin";
 
 const Login = () => {
+  const [loginError, setLoginError] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -13,12 +15,12 @@ const Login = () => {
   } = useForm();
 
   const { signUser } = useAuth();
-    const location = useLocation();
-    const navigate = useNavigate();
-  
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogin = (data) => {
     console.log(data);
+    setLoginError("");
     signUser(data.email, data.password)
       .then((result) => {
         alert("Login successful");
@@ -27,6 +29,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setLoginError(error.message);
       });
   };
 
@@ -59,6 +62,7 @@ const Login = () => {
           {errors.password?.type === "minLength" && (
             <p className="text-red-500">Minimum 6 Character.</p>
           )}
+          {loginError && <p className="text-red-600 mt-2">{loginError}</p>}
           <div>
             <a className="link link-hover">Forgot password?</a>
           </div>

@@ -4,7 +4,7 @@ import { Link, NavLink, Outlet } from "react-router";
 
 const DashboardLayout = () => {
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="drawer lg:drawer-open w-19/20 mx-auto">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Navbar */}
@@ -73,7 +73,14 @@ const DashboardLayout = () => {
             </li>
             {/* Our dashboard link */}
             <li>
-              <NavLink to="/dashboard/my-lessons"><MdPlayLesson /></NavLink>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="MyLessons"
+                to="/dashboard/my-lessons"
+              >
+                <MdPlayLesson />
+                <span className="is-drawer-close:hidden">My Lessons</span>
+              </NavLink>
             </li>
             {/* List item */}
             <li>

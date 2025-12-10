@@ -44,6 +44,7 @@ const AddLesson = () => {
         ...data,
         image: imageUrl,
         lessonerEmail: user?.email,
+        lessonerName: user?.displayName,
       };
 
       // Save to img data ibb ---<
@@ -61,7 +62,8 @@ const AddLesson = () => {
         timer: 2500,
       });
     } catch (error) {
-      console.log(error);
+      console.log("ERROR:", error.response?.data);
+      Swal.fire("Error", "Please Enter a Image!", "error");
     }
   };
 
