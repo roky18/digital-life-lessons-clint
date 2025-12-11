@@ -12,6 +12,8 @@ import MyLessons from "../Pages/MyLessons";
 import PublicLessons from "../Pages/PublicLessons";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Payment from "../Pages/Payment";
+import PaymentSuccess from "../Pages/PaymentSuccess";
+import PaymentCancel from "../Pages/PaymentCancel";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +79,14 @@ export const router = createBrowserRouter([
       {
         path: "payment",
         Component: Payment,
+      },
+      {
+        path: "payment-success",
+        Component: PaymentSuccess,
+      },
+      {
+        path: "payment-canceled",
+        Component: PaymentCancel,
       },
       {
         path: "*",
