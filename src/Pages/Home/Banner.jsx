@@ -13,11 +13,11 @@ const Banner = () => {
       infiniteLoop={true}
     >
       <div>
-        <img src={baner1} />
+        <img src={baner2} />
         <p className="legend">Digital Life Lessons 1</p>
       </div>
       <div>
-        <img src={baner2} />
+        <img src={baner1} />
         <p className="legend">Digital Life Lessons 2</p>
       </div>
       <div>

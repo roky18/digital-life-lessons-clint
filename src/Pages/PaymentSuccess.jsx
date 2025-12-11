@@ -1,8 +1,25 @@
 import { CheckCircle } from "lucide-react";
-import React from "react";
-import { Link } from "react-router";
+import React, { useEffect } from "react";
+import { Link, useSearchParams } from "react-router";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const PaymentSuccess = () => {
+  const [params] = useSearchParams();
+  const email = params.get("email");
+  const axiosSecure = useAxiosSecure();
+
+  useEffect(() => {
+    if (email) {
+      axiosSecure
+        .patch(`/users/make-premium/${email}`)
+        .then(() => {})
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [email]);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-200 px-4">
       <div className="max-w-md w-full bg-base-100 shadow-xl rounded-xl p-8 text-center">
