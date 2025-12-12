@@ -3,8 +3,9 @@ import { useNavigate, useParams } from "react-router";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import { MdReport } from "react-icons/md";
 import { FaRegBookmark, FaRegHeart, FaShareAlt } from "react-icons/fa";
+import { MessageSquareWarning } from "lucide-react";
+import Swal from "sweetalert2";
 
 const LessonDetails = () => {
   const { user } = useAuth();
@@ -12,7 +13,7 @@ const LessonDetails = () => {
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
 
-  const { data: lesson = [] } = useQuery({
+  const { data: lesson = [], refetch } = useQuery({
     queryKey: ["Lesson", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/lessons/${id}`);
@@ -41,7 +42,80 @@ const LessonDetails = () => {
     lessonerName,
     lessonerImage,
     createdAt,
+    likes = [],
+    likesCount = 0,
+    favorites = [],
+    favoriteCount = 0,
+    comments = [],
   } = lesson;
+
+  // LIke sec---->>>>>
+  const handleLike = async () => {
+    if (!user) return alert("Please log in to like");
+
+    const res = await axiosSecure.patch(`/lessons/like/${id}`, {
+      email: user.email,
+    });
+    refetch();
+    return res.data;
+  };
+
+  const handleFavorite = async () => {
+    if (!user) return alert("Please log in to favorite");
+
+    const res = await axiosSecure.patch(`/lessons/favorite/${id}`, {
+      email: user.email,
+    });
+    refetch();
+    return res.data;
+  };
+  // LIke sec----<<<<<<
+  // comment sec---->>>>>>
+  const handleAddComment = async (text) => {
+    if (!user) return alert("Please log in to comment");
+    if (!text.trim()) return;
+
+    const commentObj = {
+      userName: user.displayName,
+      userImage: user.photoURL,
+      text,
+      date: new Date(),
+    };
+    const res = await axiosSecure.patch(`/lessons/comment/${id}`, commentObj);
+
+    refetch();
+    return res.data;
+  };
+
+  // comment sec----<<<<<<
+  // REport sec---->>>>>>
+
+  const handleReport = async () => {
+    if (!user) return alert("Please log in to report");
+
+    const confirm = window.confirm(
+      "Are you sure you want to report this lesson?"
+    );
+    if (!confirm) return;
+
+    const reason = prompt("Enter reason for report");
+    if (!reason) return;
+
+    await axiosSecure.post("/report", {
+      lessonId: id,
+      reporterUserId: user.uid || user.email,
+      reason,
+      message: reason,
+    });
+    refetch();
+    Swal.fire({
+      title: "Reported!",
+      text: "Your Report has been Submitted successfully.",
+      icon: "success",
+    });
+  };
+
+  // REport sec----<<<<<<
 
   const isPremiumBlocked =
     access === "premium" && users.accessLevel !== "premium";
@@ -111,42 +185,93 @@ const LessonDetails = () => {
             <h3 className="text-lg font-bold mb-3">Engagement</h3>
 
             <div className="flex justify-center gap-6 text-xl">
-              <button className="btn btn-ghost text-red-500">
+              <button
+                className={`btn btn-ghost text-red-500 ${
+                  likes.includes(user?.email) ? "bg-red-100" : " "
+                }`}
+                onClick={handleLike}
+              >
                 <FaRegHeart />
-                <span className="text-sm">Like</span>
+                <span className="text-sm">
+                  <span>{likesCount}</span>
+                </span>
               </button>
 
-              <button className="btn btn-ghost text-blue-500">
+              <button
+                className={`btn btn-ghost text-blue-500 ${
+                  favorites.includes(user?.email) ? "bg-blue-100" : " "
+                }`}
+                onClick={handleFavorite}
+              >
                 <FaRegBookmark />
-                <span className="text-sm">Save</span>
+                <span className="text-sm">
+                  <span>{favoriteCount}</span>
+                </span>
               </button>
 
               <button className="btn btn-ghost text-green-600">
                 <FaShareAlt />
-                <span className="text-sm">Share</span>
+                <span className="text-sm">
+                  <span>00</span>
+                </span>
               </button>
 
-              <button className="btn btn-ghost text-red-600">
-                <MdReport />
-                <span className="text-sm">Report</span>
+              <button
+                onClick={handleReport}
+                className="btn btn-ghost text-red-600"
+              >
+                <MessageSquareWarning size={18} />
+                <span className="text-sm"></span>
               </button>
             </div>
           </div>
 
           {/* comments */}
           <div className="bg-white rounded-2xl pt-3 p-6 shadow-md">
-            <h3 className="text-xl font-bold text-purple-700 mb-3">Comments</h3>
+            <h3 className="text-xl font-bold text-purple-700 mb-3">
+              Comments ({comments.length})
+            </h3>
 
-            <textarea
-              className="textarea textarea-bordered w-full"
+            <input
+              type="text"
+              className="border w-2/3 h-14 p-2 flex-1 rounded"
               placeholder="Write your comment..."
-            ></textarea>
+              onKeyDown={async (e) => {
+                if (e.key === "Enter") {
+                  await handleAddComment(e.target.value);
+                  e.target.value = "";
+                }
+              }}
+            />
 
             <span className="flex justify-end">
-              <button className="btn mr-6 btn-primary mt-3">
+              <button
+                className="btn mr-6 btn-primary mt-3"
+                onClick={async () => {
+                  const input = document.querySelector("input[type=text]");
+                  await handleAddComment(input.value);
+                  input.value = "";
+                }}
+              >
                 Post Comment
               </button>
             </span>
+            {/* Show comments */}
+            <div>
+              {comments.map((c, index) => (
+                <div key={index} className="flex items-start space-x-2 mb-2">
+                  <img
+                    src={c.userImage}
+                    alt={c.userName}
+                    className="w-8 h-8 rounded-full"
+                  />
+                  <div>
+                    <p className="text-sm font-semibold">{c.userName}</p>
+                    <p className="text-sm">{c.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

@@ -56,14 +56,26 @@ const AddLesson = () => {
       const lessonData = {
         ...data,
         image: imageUrl,
+
         lessonerEmail: user?.email,
         lessonerName: user?.displayName,
         lessonerImage: user?.photoURL,
+
+        likes: [],
+        likesCount: 0,
+
+        favorites: [],
+        favoriteCount: 0,
+
+        comments: [],
+
+        createdAt: new Date(),
       };
 
       // Save to img data ibb ---<
 
       const mongoDBres = await axiosSecure.post("/lessons", lessonData);
+
       console.log("after lesson post & save to MongoDB", mongoDBres.data);
 
       // Save to data in MongoDB---<
