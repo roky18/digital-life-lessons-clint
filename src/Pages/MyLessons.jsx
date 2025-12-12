@@ -77,7 +77,7 @@ const MyLessons = () => {
               {lessons.map((lesson, index) => (
                 <tr key={lesson._id}>
                   <th>{index + 1}</th>
-                  <td>{lesson.tone}</td>
+                  <td>{lesson.title}</td>
                   <td>{lesson.privacy}</td>
                   <td>{lesson.access}</td>
                   <td>

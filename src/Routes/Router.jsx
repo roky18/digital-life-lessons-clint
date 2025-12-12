@@ -18,6 +18,7 @@ import LessonDetails from "../Pages/LessonDetails";
 import UpdateLessons from "../Pages/UpdateLessons";
 import Profile from "../Pages/Profile";
 import AuthorInfo from "../Pages/AuthorInfo";
+import DHome from "../Dashboard/DHome";
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        index: true,
+        Component: DHome,
+      },
       {
         path: "my-lessons",
         Component: MyLessons,

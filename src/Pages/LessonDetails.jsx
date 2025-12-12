@@ -209,16 +209,14 @@ const LessonDetails = () => {
                 </span>
               </button>
 
-              <button className="btn btn-ghost text-green-600">
+              <button className="btn btn-ghost bg-green-100 text-green-600">
                 <FaShareAlt />
-                <span className="text-sm">
-                  <span>00</span>
-                </span>
+                <span className="text-sm"></span>
               </button>
 
               <button
                 onClick={handleReport}
-                className="btn btn-ghost text-red-600"
+                className="btn btn-ghost bg-orange-100 text-red-600"
               >
                 <MessageSquareWarning size={18} />
                 <span className="text-sm"></span>
@@ -258,16 +256,16 @@ const LessonDetails = () => {
             </span>
             {/* Show comments */}
             <div>
-              {comments.map((c, index) => (
+              {comments.map((comment, index) => (
                 <div key={index} className="flex items-start space-x-2 mb-2">
                   <img
-                    src={c.userImage}
-                    alt={c.userName}
+                    src={comment.userImage}
+                    alt={comment.userName}
                     className="w-8 h-8 rounded-full"
                   />
                   <div>
-                    <p className="text-sm font-semibold">{c.userName}</p>
-                    <p className="text-sm">{c.text}</p>
+                    <p className="text-sm font-semibold">{comment.userName}</p>
+                    <p className="text-sm">{comment.text}</p>
                   </div>
                 </div>
               ))}

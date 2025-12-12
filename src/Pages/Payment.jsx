@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Payment = () => {
   const { user } = useAuth();
@@ -16,14 +17,34 @@ const Payment = () => {
   });
 
   const handlePayment = async () => {
-    const paymentInfo = {
-      userId: user?._id,
-      userEmail: user?.email,
-      userName: user?.displayName,
-    };
-    const res = await axiosSecure.post("/create-checkout-session", paymentInfo);
-    console.log(res.data);
-    window.location.href = res.data.url;
+    if (!user) return alert("Please log in for pay");
+
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You are pay ৳1500 for Premium Access ⭐",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, pay now!",
+      cancelButtonText: "Cancel",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        const paymentInfo = {
+          userId: user?._id,
+          userEmail: user?.email,
+          userName: user?.displayName,
+        };
+        const res = await axiosSecure.post(
+          "/create-checkout-session",
+          paymentInfo
+        );
+        console.log(res.data);
+        window.location.href = res.data.url;
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   if (isLoading) {
