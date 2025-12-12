@@ -1,10 +1,11 @@
 import React from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const FeaturedLessons = () => {
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const { data: lessons = [] } = useQuery({
     queryKey: ["featuredLessons"],
@@ -63,6 +64,14 @@ const FeaturedLessons = () => {
           </div>
         ))}
       </section>
+      <span className="flex justify-center mt-4 ">
+        <button
+          onClick={() => navigate(`/public-lessons`)}
+          className="btn btn-primary"
+        >
+          Show All
+        </button>
+      </span>
     </div>
   );
 };

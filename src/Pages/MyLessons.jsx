@@ -11,10 +11,14 @@ import {
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiFillLike } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { Link } from "lucide-react";
+import { useNavigate } from "react-router";
+import { Fade } from "react-awesome-reveal";
 
 const MyLessons = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const { data: lessons = [], refetch } = useQuery({
     queryKey: ["myLessons", user?.email],
@@ -38,7 +42,7 @@ const MyLessons = () => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/lessons/${id}`).then((res) => {
           if (res.data.deletedCount) {
-            refetch()
+            refetch();
             Swal.fire({
               title: "Deleted!",
               text: "Your Lesson has been deleted.",
@@ -50,75 +54,83 @@ const MyLessons = () => {
     });
   };
   return (
-    <div className="w-11/12 mx-auto mb-8 py-5 shadow-2xl">
-      <h3 className="text-primary text-center font-semibold my-6 mb-10 text-3xl">
-        All of my Lessons : {lessons.length}
-      </h3>
-      <div className="overflow-x-auto">
-        <table className="table text-center table-zebra">
-          {/* head */}
-          <thead>
-            <tr className="text-purple-400">
-              <th>#</th>
-              <th>Important info</th>
-              <th>Visibility</th>
-              <th>Access level</th>
-              <th>Details </th>
-              <th> Stats</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {lessons.map((lesson, index) => (
-              <tr key={lesson._id}>
-                <th>{index + 1}</th>
-                <td>{lesson.tone}</td>
-                <td>{lesson.privacy}</td>
-                <td>{lesson.access}</td>
-                <td>
-                  <button className="btn btn-dash btn-info">
-                    <MdOutlineInfo />{" "}
-                  </button>
-                </td>
-                <td>
-                  <div className="flex-col flex items-center">
-                    <span className="flex items-center">
-                      <MdOutlineDateRange />
-                      {new Date(lesson.createdAt).toLocaleDateString()}
-                    </span>
-                    <div className="flex flex-col md:flex-row">
-                      <span className="flex text-blue-500 items-center">
-                        <AiFillLike />
-                        -- 99 ◾
-                      </span>
-                      <span className="flex text-red-500 items-center">
-                        <MdFavorite />
-                        -- 77
-                      </span>
-                    </div>
-                  </div>
-                </td>
-
-                <td>
-                  <div className="flex flex-col md:flex-row gap-2">
-                    <button className="btn btn-dash btn-warning">
-                      <MdEditSquare />{" "}
-                    </button>
-
-                    <button
-                      onClick={() => handleLessonDelete(lesson._id)}
-                      className="btn btn-dash btn-error"
-                    >
-                      <RiDeleteBin6Line />{" "}
-                    </button>
-                  </div>
-                </td>
+    <Fade cascade damping={0.3} triggerOnce>
+      <div className="w-11/12 mx-auto mb-8 py-5 shadow-2xl">
+        <h3 className="text-primary text-center font-semibold my-6 mb-10 text-3xl">
+          All of my Lessons : {lessons.length}
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="table text-center table-zebra">
+            {/* head */}
+            <thead>
+              <tr className="text-purple-400">
+                <th>#</th>
+                <th>Important info</th>
+                <th>Visibility</th>
+                <th>Access level</th>
+                <th>Details </th>
+                <th> Stats</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {lessons.map((lesson, index) => (
+                <tr key={lesson._id}>
+                  <th>{index + 1}</th>
+                  <td>{lesson.tone}</td>
+                  <td>{lesson.privacy}</td>
+                  <td>{lesson.access}</td>
+                  <td>
+                    <button
+                      onClick={() => navigate(`/lesson-details/${lesson._id}`)}
+                      className="btn btn-dash btn-info"
+                    >
+                      <MdOutlineInfo />{" "}
+                    </button>
+                  </td>
+                  <td>
+                    <div className="flex-col flex items-center">
+                      <span className="flex items-center">
+                        <MdOutlineDateRange />
+                        {new Date(lesson.createdAt).toLocaleDateString()}
+                      </span>
+                      <div className="flex flex-col md:flex-row">
+                        <span className="flex text-blue-500 items-center">
+                          <AiFillLike />
+                          -- 99 ◾
+                        </span>
+                        <span className="flex text-red-500 items-center">
+                          <MdFavorite />
+                          -- 77
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td>
+                    <div className="flex flex-col md:flex-row gap-2">
+                      <button
+                        onClick={() => navigate(`update-lesson/${lesson._id}`)}
+                        className="btn btn-dash btn-warning"
+                      >
+                        <MdEditSquare />{" "}
+                      </button>
+
+                      <button
+                        onClick={() => handleLessonDelete(lesson._id)}
+                        className="btn btn-dash btn-error"
+                      >
+                        <RiDeleteBin6Line />{" "}
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </Fade>
   );
 };
 

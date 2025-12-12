@@ -18,7 +18,7 @@ const PaymentSuccess = () => {
           console.log(error);
         });
     }
-  }, [email]);
+  }, [email, axiosSecure]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-200 px-4">

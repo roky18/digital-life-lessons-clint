@@ -5,13 +5,26 @@ import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const AddLesson = () => {
   const { user } = useAuth();
-  const userType = user?.role;
   const { register, handleSubmit } = useForm();
 
   const axiosSecure = useAxiosSecure();
+
+  // user related-------->>
+  const { data: users = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/users/email/${user.email}`);
+
+      return res.data;
+    },
+  });
+  console.log(users);
+
+  const isPremiumUser = users.accessLevel === "premium";
 
   const handleAddLesson = async (data) => {
     try {
@@ -45,6 +58,7 @@ const AddLesson = () => {
         image: imageUrl,
         lessonerEmail: user?.email,
         lessonerName: user?.displayName,
+        lessonerImage: user?.photoURL,
       };
 
       // Save to img data ibb ---<
@@ -174,8 +188,8 @@ const AddLesson = () => {
             >
               <select
                 {...register("access")}
-                disabled={userType !== "premium"}
-                className="select select-bordered mt-2"
+                disabled={!isPremiumUser}
+                className="select flex ml-2 select-bordered mt-2"
               >
                 <option disabled>Select access level</option>
                 <option value="free">Free</option>

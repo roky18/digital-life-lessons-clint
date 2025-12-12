@@ -14,6 +14,10 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import Payment from "../Pages/Payment";
 import PaymentSuccess from "../Pages/PaymentSuccess";
 import PaymentCancel from "../Pages/PaymentCancel";
+import LessonDetails from "../Pages/LessonDetails";
+import UpdateLessons from "../Pages/UpdateLessons";
+import Profile from "../Pages/Profile";
+import AuthorInfo from "../Pages/AuthorInfo";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +37,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Upgrade></Upgrade>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "lesson-details/:id",
+        element: (
+          <PrivateRoute>
+            <LessonDetails></LessonDetails>
           </PrivateRoute>
         ),
       },
@@ -73,8 +85,20 @@ export const router = createBrowserRouter([
         Component: MyLessons,
       },
       {
+        path: "profile/:email",
+        Component: Profile,
+      },
+      {
+        path: "author/:email",
+        Component: AuthorInfo,
+      },
+      {
         path: "add-lessons",
         Component: AddLesson,
+      },
+      {
+        path: "my-lessons/update-lesson/:id",
+        Component: UpdateLessons,
       },
       {
         path: "payment",

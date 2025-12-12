@@ -81,7 +81,8 @@ const Upgrade = () => {
       <div className="text-center mt-10">
         <Link to={`/dashboard/payment`}>
           <button className="btn text-black btn-success h-12 w-9/10">
-            Upgrade to Premium ৳1500
+            Upgrade to Premium <span className="
+            text-red-600">৳ 1500</span>
           </button>
         </Link>
       </div>

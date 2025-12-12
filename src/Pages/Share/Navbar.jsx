@@ -1,10 +1,11 @@
 import React from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import Logo from "./Logo";
 import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
     logOut()
@@ -100,8 +101,13 @@ const Navbar = () => {
               </li>
 
               <li>
-                <Link to="">Profile</Link>
+                <button
+                  onClick={() => navigate(`/dashboard/profile/${user.email}`)}
+                >
+                  Profile
+                </button>
               </li>
+
               <li>
                 <Link to="/dashboard">Dashboard</Link>
               </li>
