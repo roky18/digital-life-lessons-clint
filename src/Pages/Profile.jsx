@@ -11,6 +11,15 @@ const Profile = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
+  // save lesson  ------->>
+  const { data: favorites = [] } = useQuery({
+    queryKey: ["myFavorites", userEmail],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/favorites?email=${userEmail}`);
+      return res.data;
+    },
+  });
+
   // Fetch users Info -------->>>
   const { data: users } = useQuery({
     queryKey: ["users", userEmail],
@@ -59,9 +68,7 @@ const Profile = () => {
               <p className="text-sm text-gray-500">Lessons Created</p>
             </div>
             <div>
-              <p className="font-semibold">
-                {users?.savedLessons?.length || 0}
-              </p>
+              <p className="font-semibold">{favorites?.length || 0}</p>
               <p className="text-sm text-gray-500">Lessons Saved</p>
             </div>
           </div>

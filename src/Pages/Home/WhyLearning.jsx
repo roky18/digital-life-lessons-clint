@@ -6,16 +6,15 @@ import Wl4 from "../../assets/Wl-4.jpg";
 
 const WhyLearning = () => {
   return (
-    <div className=" rounded-xl  my-8 mb-16">
-      <div className="p-10 shadow-2xl rounded-2xl">
-        <div className="text-center w-80 mx-auto">
-          <h3 className="text-primary font-semibold mb-8 text-3xl">
-            Why Learning From Life Matters
-          </h3>
-        </div>
-        <section className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className=" rounded-xl w-11/12 mx-auto  my-8 mb-16">
+      <h3 className="text-primary text-center font-semibold mb-8 text-3xl">
+        Why Learning From Life Matters
+      </h3>
+      <div className="p-10 shadow-2xl bg-teal-100 rounded-2xl">
+        <div className="text-center w-80 mx-auto"></div>
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* ---------------> */}
-          <div className="bg-orange-100 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out hover:bg-cyan-200 hover:scale-105">
+          <div className="bg-orange-100 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out shadow-2xl hover:scale-105">
             <img className=" rounded-2xl object-cover  " src={Wl1} alt="" />
             <h4 className=" font-semibold">
               Helps You Understand Yourself Better
@@ -28,7 +27,7 @@ const WhyLearning = () => {
             </p>
           </div>
           {/* ---------------> */}
-          <div className="bg-orange-100 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out hover:bg-cyan-200 hover:scale-105">
+          <div className="bg-orange-100 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out shadow-2xl hover:scale-105">
             <img className=" rounded-2xl object-cover  " src={Wl2} alt="" />
             <h4 className="font-semibold">
               Makes Future Decision-Making Easier
@@ -41,7 +40,7 @@ const WhyLearning = () => {
             </p>
           </div>
           {/* ---------------> */}
-          <div className="bg-orange-100 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out hover:bg-cyan-200 hover:scale-105">
+          <div className="bg-orange-100 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out shadow-2xl hover:scale-105">
             <img className=" rounded-2xl object-cover  " src={Wl3} alt="" />
             <h4 className="font-semibold">
               Reduces Repeating the Same Mistakes
@@ -54,7 +53,7 @@ const WhyLearning = () => {
             </p>
           </div>
           {/* ---------------> */}
-          <div className="bg-orange-100 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out hover:bg-cyan-200 hover:scale-105">
+          <div className="bg-orange-100 flex flex-col items-center text-center w-66 mx-auto space-y-2 p-4 rounded-2xl overflow-hidden transition-transform duration-300 ease-in-out shadow-2xl hover:scale-105">
             <img className=" rounded-2xl object-cover  " src={Wl4} alt="" />
             <h4 className="font-semibold">Inspires Others Around You</h4>
             <p className="text-gray-500 text-xs">

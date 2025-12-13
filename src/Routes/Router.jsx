@@ -19,6 +19,12 @@ import UpdateLessons from "../Pages/UpdateLessons";
 import Profile from "../Pages/Profile";
 import AuthorInfo from "../Pages/AuthorInfo";
 import DHome from "../Dashboard/DHome";
+import MyFavorites from "../Pages/MyFavorites";
+import AdminHome from "../Admin/AdminHome";
+import ManageUsers from "../Admin/ManageUsers ";
+import ManageLessons from "../Admin/ManageLessons ";
+import ReportLessons from "../Admin/ReportLessons";
+import AdminProfile from "../Admin/AdminProfile ";
 
 export const router = createBrowserRouter([
   {
@@ -90,6 +96,10 @@ export const router = createBrowserRouter([
         Component: MyLessons,
       },
       {
+        path: "my-favorite",
+        Component: MyFavorites,
+      },
+      {
         path: "profile/:email",
         Component: Profile,
       },
@@ -117,6 +127,33 @@ export const router = createBrowserRouter([
         path: "payment-canceled",
         Component: PaymentCancel,
       },
+
+      // admin---->>>>
+      {
+        path: "admin",
+        Component: AdminHome,
+      },
+
+      {
+        path: "admin/manage-users",
+        Component: ManageUsers,
+      },
+
+      {
+        path: "admin/manage-lessons",
+        Component: ManageLessons,
+      },
+
+      {
+        path: "admin/reported-lessons",
+        Component: ReportLessons,
+      },
+
+      {
+        path: "admin/profile",
+        Component: AdminProfile,
+      },
+
       {
         path: "*",
         Component: Error,

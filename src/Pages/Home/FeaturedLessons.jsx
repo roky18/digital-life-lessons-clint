@@ -25,7 +25,8 @@ const FeaturedLessons = () => {
         Featured Life Lessons (Recent 6)
       </h3>
 
-      <section className="p-10 shadow-2xl rounded-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <div className="p-10 shadow-2xl bg-lime-50 rounded-2xl ">
+       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {latestSix.map((lesson) => (
           <div
             key={lesson._id}
@@ -63,15 +64,17 @@ const FeaturedLessons = () => {
             </Link>
           </div>
         ))}
+        
       </section>
-      <span className="flex justify-center mt-4 ">
+      <span className="flex justify-center  mt-8">
         <button
           onClick={() => navigate(`/public-lessons`)}
-          className="btn btn-primary"
+          className="btn w-2/10 btn-dash btn-info"
         >
           Show All
         </button>
       </span>
+     </div>
     </div>
   );
 };

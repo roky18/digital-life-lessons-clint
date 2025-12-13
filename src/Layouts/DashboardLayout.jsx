@@ -1,5 +1,11 @@
+import { BookUser } from "lucide-react";
 import React from "react";
-import { MdAssignmentAdd, MdPlayLesson } from "react-icons/md";
+import {
+  MdAssignmentAdd,
+  MdFavoriteBorder,
+  MdManageAccounts,
+  MdPlayLesson,
+} from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router";
 
 const DashboardLayout = () => {
@@ -88,6 +94,32 @@ const DashboardLayout = () => {
               >
                 <MdAssignmentAdd />
                 <span className="is-drawer-close:hidden">Add Lessons</span>
+              </NavLink>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="MyFavorite"
+                to="/dashboard/my-favorite"
+              >
+                <MdFavoriteBorder />
+                <span className="is-drawer-close:hidden">My Favorite</span>
+              </NavLink>
+
+              {/* admin---->>> */}
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="ManageLessons"
+                to="/dashboard/admin/manage-lessons"
+              >
+                <BookUser size={14} />
+                <span className="is-drawer-close:hidden">Manage Users</span>
+              </NavLink>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="ManageUsers"
+                to="/dashboard/admin/manage-users"
+              >
+                <MdManageAccounts />
+                <span className="is-drawer-close:hidden">Manage Lessons</span>
               </NavLink>
             </li>
             {/* List item */}

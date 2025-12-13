@@ -15,6 +15,7 @@ const AuthorInfo = () => {
       return res.data;
     },
   });
+  console.log(author);
 
   // Fetch Author Lessons
   const { data: lessons = [] } = useQuery({
@@ -31,6 +32,7 @@ const AuthorInfo = () => {
       <div className="flex flex-col md:flex-row items-center gap-6 mb-10">
         <div className="relative">
           <img
+            referrerPolicy="no-referrer"
             src={author.photoURL}
             alt=""
             className="w-32 h-32 rounded-full object-cover"
