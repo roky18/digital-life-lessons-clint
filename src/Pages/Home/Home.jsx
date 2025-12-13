@@ -3,8 +3,8 @@ import Banner from "./Banner";
 import FeaturedLessons from "./FeaturedLessons";
 import WhyLearning from "./WhyLearning";
 import MostSavedLessons from "./MostSavedLessons";
-import TopContributors from "./TopContributors";
 import { Fade } from "react-awesome-reveal";
+import MostLikedLessons from "./MostLikedLessons";
 
 const Home = () => {
   return (
@@ -13,7 +13,7 @@ const Home = () => {
         <Banner></Banner>
         <FeaturedLessons></FeaturedLessons>
         <WhyLearning></WhyLearning>
-        <TopContributors></TopContributors>
+        <MostLikedLessons></MostLikedLessons>
         <MostSavedLessons></MostSavedLessons>
       </Fade>
     </div>

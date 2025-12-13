@@ -15,13 +15,30 @@ const UpdateLessons = () => {
   useEffect(() => {
     axiosSecure.get(`/lessons/${id}`).then((res) => {
       setLesson(res.data);
-      reset(res.data);
+      reset({
+        title: res.data.title || "",
+        description: res.data.description || "",
+        category: res.data.category || "",
+        tone: res.data.tone || "",
+        image: res.data.image || "",
+        privacy: res.data.privacy || "",
+        access: res.data.access || "",
+      });
     });
   }, [id, reset, axiosSecure]);
 
   const onSubmit = async (data) => {
+    const updatedLesson = {
+      title: data.title,
+      description: data.description,
+      category: data.category,
+      tone: data.tone,
+      image: data.image,
+      privacy: data.privacy,
+      access: data.access,
+    };
     try {
-      await axiosSecure.patch(`/lessons/${id}`, data);
+      await axiosSecure.patch(`/lessons/${id}`, updatedLesson);
       Swal.fire("Success", "Lesson updated successfully!", "success");
       navigate("/dashboard/my-lessons");
     } catch (error) {

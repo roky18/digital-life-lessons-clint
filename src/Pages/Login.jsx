@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../Hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router";
 import GoogleLogin from "./GoogleLogin";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [loginError, setLoginError] = useState("");
@@ -23,7 +24,13 @@ const Login = () => {
     setLoginError("");
     signUser(data.email, data.password)
       .then((result) => {
-        alert("Login successful");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login successful",
+          showConfirmButton: false,
+          timer: 2000,
+        });
         console.log(result.user);
         navigate(location?.state || "/");
       })

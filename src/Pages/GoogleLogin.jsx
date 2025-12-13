@@ -3,6 +3,7 @@ import React from "react";
 import useAuth from "../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const GoogleLogin = () => {
   const { signInGoogle } = useAuth();
@@ -13,7 +14,13 @@ const GoogleLogin = () => {
   const handleGoogleSign = () => {
     signInGoogle()
       .then((result) => {
-        console.log(result.user);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login successful",
+          showConfirmButton: false,
+          timer: 2000,
+        });
 
         // create user in db--->>>
         const userInfo = {

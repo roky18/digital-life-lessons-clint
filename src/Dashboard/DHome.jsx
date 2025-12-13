@@ -92,10 +92,19 @@ const DHome = () => {
               key={lesson._id}
               className="bg-purple-50 p-4 rounded-lg shadow-sm"
             >
-              <h4 className="font-semibold">{lesson.title}</h4>
-              <p className="text-sm text-gray-600 truncate">
-                {lesson.description}
-              </p>
+              <div className="flex gap-3 items-center">
+                <img
+                  src={lesson.image}
+                  className="w-16 h-16 object-cover rounded-full "
+                  alt=""
+                />
+                <span>
+                  <h4 className="font-semibold">{lesson.title}</h4>
+                  <p className="text-sm  text-gray-600 truncate">
+                    {lesson.description?.slice(0, 16)}....
+                  </p>
+                </span>
+              </div>
             </div>
           ))}
         </div>
