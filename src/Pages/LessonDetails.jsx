@@ -184,7 +184,7 @@ const LessonDetails = () => {
           <div className="bg-white my-2 rounded-2xl p-4 shadow-md text-center">
             <h3 className="text-lg font-bold mb-3">Engagement</h3>
 
-            <div className="flex justify-center gap-6 text-xl">
+            <div className="flex flex-col md:flex-row justify-center gap-6 text-xl">
               <button
                 className={`btn btn-ghost text-red-500 ${
                   likes.includes(user?.email) ? "bg-red-100" : " "

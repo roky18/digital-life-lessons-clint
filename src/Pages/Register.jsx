@@ -7,6 +7,7 @@ import useAuth from "../Hooks/useAuth";
 import GoogleLogin from "./GoogleLogin";
 import axios from "axios";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {
@@ -56,7 +57,16 @@ const Register = () => {
           };
           updateUserProfile(userProfile)
             .then(() => {
-              navigate(location.state || "/");
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Registration Successful!",
+                text: "Welcome to Digital Life Lessons 🎉",
+                showConfirmButton: false,
+                timer: 2000,
+              }).then(() => {
+                navigate(location.state || "/");
+              });
             })
             .catch((error) => console.log(error));
         });

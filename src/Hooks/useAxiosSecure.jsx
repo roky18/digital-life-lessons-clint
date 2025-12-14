@@ -6,6 +6,9 @@ import { useNavigate } from "react-router";
 const axiosSecure = axios.create({
   baseURL: "https://digital-life-lessons-server-brown.vercel.app/",
 });
+// const axiosSecure = axios.create({
+//   baseURL: "http://localhost:5173/",
+// });
 const useAxiosSecure = () => {
   const navigate = useNavigate();
   const { user, logOut } = useAuth();

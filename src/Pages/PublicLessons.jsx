@@ -137,12 +137,12 @@ const PublicLessons = () => {
           })}
         </div>
       </div>
-        <span className="flex justify-center mb-12 mt-6">
+      <span className="flex justify-center mb-12 mt-6">
         <button
           onClick={() => navigate(`/`)}
           className="btn w-2/10 btn-dash btn-info"
         >
-         ⬅ Back to Home
+          ⬅Home
         </button>
       </span>
     </Fade>
