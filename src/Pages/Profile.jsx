@@ -41,6 +41,18 @@ const Profile = () => {
     },
   });
 
+  //   admin filter-->
+  const { data: userData = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/users/email/${user.email}`);
+
+      return res.data;
+    },
+  });
+
+  const admin = userData.role === "admin";
+
   if (isLoading) return <Loading />;
 
   return (
@@ -73,16 +85,29 @@ const Profile = () => {
             </div>
           </div>
 
-          {/* update */}
+          {/* update access & admin */}
           <div className="flex flex-col items-center md:flex-row gap-4 mt-4">
             {users?.accessLevel === "premium" ? (
-              <span className=" badge badge-success font-semibold p-4">
-                Premium ⭐
+              <span className=" text-white badge badge-success font-semibold p-4">
+                ✔ Premium ⭐
               </span>
             ) : (
-              " "
+              <span className=" badge badge-neutral font-semibold p-4">
+                Free
+              </span>
             )}
             <button className="btn btn-primary">Edit Profile</button>
+            <div>
+              {admin ? (
+                <span className=" text-white badge badge-success font-semibold p-4">
+                  ⭐✔ Admin ⭐
+                </span>
+              ) : (
+                <span className=" badge badge-neutral font-semibold p-4">
+                  User
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -76,7 +76,7 @@ const Register = () => {
       });
   };
   return (
-    <div className="card bg-amber-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
+    <div className="card mt-6 bg-amber-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
       <form className="card-body" onSubmit={handleSubmit(handleRegister)}>
         <p className="text-2xl font-semibold text-emerald-500 text-center">
           Please Register

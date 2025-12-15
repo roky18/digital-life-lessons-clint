@@ -6,13 +6,14 @@ import { FaLock } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
 import { AuthContext } from "../Contexts/AuthContext";
 import useAuth from "../Hooks/useAuth";
+import Loading from "./Share/Loading";
 
 const PublicLessons = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  const { data: lessons = [] } = useQuery({
+  const { data: lessons = [], isLoading: lessonsLoading } = useQuery({
     queryKey: ["publicLessons"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/lessons/${lessons}`);
@@ -23,7 +24,7 @@ const PublicLessons = () => {
   console.log(lessons.access);
 
   // user related-------->>
-  const { data: users = [] } = useQuery({
+  const { data: users = [], isLoading: userLoading } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/users/email/${user.email}`);
@@ -31,7 +32,10 @@ const PublicLessons = () => {
       return res.data;
     },
   });
-  console.log(users);
+
+  if (lessonsLoading || userLoading) {
+    return <Loading></Loading>;
+  }
 
   const isPremiumUser = users.accessLevel === "premium";
 

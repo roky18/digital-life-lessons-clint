@@ -8,7 +8,26 @@ import {
 } from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router";
 
+import logoimage from "../assets/dll-Logo.png";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAuth from "../Hooks/useAuth";
+
 const DashboardLayout = () => {
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
+
+  const { data: userData = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/users/email/${user.email}`);
+
+      return res.data;
+    },
+  });
+
+  const admin = userData.role === "admin";
+
   return (
     <div className="drawer lg:drawer-open w-19/20 mx-auto">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -53,29 +72,58 @@ const DashboardLayout = () => {
         <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
           {/* Sidebar content here */}
           <ul className="menu w-full grow">
+            <li>
+              <Link to="/">
+                <img src={logoimage} alt="" />
+              </Link>
+            </li>
             {/* List item */}
             <li>
-              <Link
-                to="/"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Homepage"
-              >
-                {/* Home icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4"
+              {admin ? (
+                <Link
+                  to="/dashboard/admin"
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Homepage"
                 >
-                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
-                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                </svg>
-                <span className="is-drawer-close:hidden">Homepage</span>
-              </Link>
+                  {/* Home icon */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    strokeLinejoin="round"
+                    strokeLinecap="round"
+                    strokeWidth="2"
+                    fill="none"
+                    stroke="currentColor"
+                    className="my-1.5 inline-block size-4"
+                  >
+                    <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
+                    <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  </svg>
+                  <span className="is-drawer-close:hidden">Homepage</span>
+                </Link>
+              ) : (
+                <Link
+                  to="/dashboard"
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Homepage"
+                >
+                  {/* Home icon */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    strokeLinejoin="round"
+                    strokeLinecap="round"
+                    strokeWidth="2"
+                    fill="none"
+                    stroke="currentColor"
+                    className="my-1.5 inline-block size-4"
+                  >
+                    <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
+                    <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  </svg>
+                  <span className="is-drawer-close:hidden">Homepage</span>
+                </Link>
+              )}
             </li>
             {/* Our dashboard link */}
             <li>
@@ -104,23 +152,29 @@ const DashboardLayout = () => {
                 <span className="is-drawer-close:hidden">My Favorite</span>
               </NavLink>
 
-              {/* admin---->>> */}
-              <NavLink
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="ManageLessons"
-                to="/dashboard/admin/manage-lessons"
-              >
-                <BookUser size={14} />
-                <span className="is-drawer-close:hidden">Manage Users</span>
-              </NavLink>
-              <NavLink
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="ManageUsers"
-                to="/dashboard/admin/manage-users"
-              >
-                <MdManageAccounts />
-                <span className="is-drawer-close:hidden">Manage Lessons</span>
-              </NavLink>
+              {admin && (
+                <>
+                  {/* admin---->>> */}
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="ManageLessons"
+                    to="/dashboard/admin/manage-lessons"
+                  >
+                    <BookUser size={14} />
+                    <span className="is-drawer-close:hidden">Manage Users</span>
+                  </NavLink>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="ManageUsers"
+                    to="/dashboard/admin/manage-users"
+                  >
+                    <MdManageAccounts />
+                    <span className="is-drawer-close:hidden">
+                      Manage Lessons
+                    </span>
+                  </NavLink>
+                </>
+              )}
             </li>
             {/* List item */}
             <li>

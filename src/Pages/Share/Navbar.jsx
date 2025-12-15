@@ -2,10 +2,24 @@ import React from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import Logo from "./Logo";
 import useAuth from "../../Hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
+
+  const { data: userData = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/users/email/${user.email}`);
+
+      return res.data;
+    },
+  });
+
+  const admin = userData.role === "admin";
 
   const handleLogOut = () => {
     logOut()
@@ -100,17 +114,31 @@ const Navbar = () => {
                 {user.displayName}
               </li>
 
-              <li>
+              {
+                admin?<li>
+                <button
+                  onClick={() => navigate(`/dashboard/admin/profile/${user.email}`)}
+                >
+                  Profile
+                </button>
+              </li>:<li>
                 <button
                   onClick={() => navigate(`/dashboard/profile/${user.email}`)}
                 >
                   Profile
                 </button>
               </li>
+              }
 
-              <li>
-                <Link to="/dashboard">Dashboard</Link>
-              </li>
+              {admin ? (
+                <li>
+                  <Link to="/dashboard/admin">Dashboard</Link>
+                </li>
+              ) : (
+                <li>
+                  <Link to="/dashboard">Dashboard</Link>
+                </li>
+              )}
 
               <li>
                 <button

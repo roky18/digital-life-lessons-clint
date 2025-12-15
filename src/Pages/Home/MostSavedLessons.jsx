@@ -3,12 +3,13 @@ import React from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { Link, useNavigate } from "react-router";
 import { FaRegBookmark, FaRegHeart } from "react-icons/fa";
+import Loading from "../Share/Loading";
 
 const MostSavedLessons = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
-  const { data: favoriteCount = [] } = useQuery({
+  const { data: favoriteCount = [], isLoading } = useQuery({
     queryKey: ["favoriteCount"],
     queryFn: async () => {
       const res = await axiosSecure.get("/lessons");
@@ -19,6 +20,11 @@ const MostSavedLessons = () => {
   const latestSix = [...favoriteCount]
     .sort((a, b) => b.favoriteCount - a.favoriteCount)
     .slice(0, 5);
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <div className="w-11/12 mx-auto my-6 mb-16">
       <h3 className="text-primary text-center font-semibold mb-10 text-3xl">

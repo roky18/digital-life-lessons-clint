@@ -15,9 +15,8 @@ const AuthorInfo = () => {
       return res.data;
     },
   });
-  console.log(author);
 
-  // Fetch Author Lessons
+  //   Lessons
   const { data: lessons = [] } = useQuery({
     queryKey: ["author-lessons", email],
     queryFn: async () => {
@@ -26,6 +25,16 @@ const AuthorInfo = () => {
     },
   });
   console.log(lessons);
+  //   favorite
+  const { data: favorites = [] } = useQuery({
+    queryKey: ["myFavorites", email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/favorites?email=${email}`);
+      return res.data;
+    },
+  });
+  console.log(favorites);
+
   return (
     <div className="w-11/12 mx-auto my-8">
       {/* Author Profile */}
@@ -52,9 +61,7 @@ const AuthorInfo = () => {
               <p className="text-sm text-gray-500">Lessons Created</p>
             </div>
             <div>
-              <p className="font-semibold">
-                {author.savedLessons?.length || 0}
-              </p>
+              <p className="font-semibold">{favorites.length}</p>
               <p className="text-sm text-gray-500">Lessons Saved</p>
             </div>
           </div>

@@ -14,13 +14,18 @@ import Swal from "sweetalert2";
 import { Link } from "lucide-react";
 import { useNavigate } from "react-router";
 import { Fade } from "react-awesome-reveal";
+import Loading from "./Share/Loading";
 
 const MyLessons = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
-  const { data: lessons = [], refetch } = useQuery({
+  const {
+    data: lessons = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["myLessons", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/lessons?email=${user.email}`);
@@ -53,6 +58,10 @@ const MyLessons = () => {
       }
     });
   };
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <Fade cascade damping={0.3} triggerOnce>
       <div className="w-11/12 mx-auto mb-8 py-5 shadow-2xl">

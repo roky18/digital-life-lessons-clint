@@ -10,7 +10,6 @@ const DHome = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-  // resently----->>>
   const { data: lessons = [] } = useQuery({
     queryKey: ["lessons", user?.email],
     queryFn: async () => {
@@ -45,6 +44,9 @@ const DHome = () => {
 
   return (
     <div className="w-11/12 mx-auto my-6 space-y-6">
+       <h2 className="text-2xl md:text-3xl font-bold mb-10 text-primary text-center">
+        ⭐ User Dashboard Overview ⭐
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="card bg-purple-100 shadow-md p-4 flex items-center gap-4">
           <FaBook className="text-4xl text-purple-700" />

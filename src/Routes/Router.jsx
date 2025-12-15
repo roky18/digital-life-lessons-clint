@@ -150,7 +150,7 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "admin/profile",
+        path: "admin/profile/:email",
         Component: AdminProfile,
       },
 
