@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { FaBookOpen, FaChartLine, FaFlag, FaUsers } from "react-icons/fa";
+import { FaBookOpen,  FaFlag, FaUsers } from "react-icons/fa";
 import { MdToday } from "react-icons/md";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
@@ -18,7 +18,6 @@ const AdminHome = () => {
       return res.data;
     },
   });
-  // today lesson -->
   const today = new Date().toDateString();
 
   const todayLessons = lessons.filter(
@@ -33,17 +32,17 @@ const AdminHome = () => {
       return Array.isArray(res.data) ? res.data : [];
     },
   });
-  //   // total report -->
-  //   const { data: reports = [] } = useQuery({
-  //     queryKey: ["reports"],
-  //     queryFn: async () => {
-  //       const res = await axiosSecure.get(`/reports`);
+    // total report -->
+    const { data: reports = [] } = useQuery({
+      queryKey: ["reports"],
+      queryFn: async () => {
+        const res = await axiosSecure.get(`/reports`);
 
-  //       return res.data;
-  //     },
-  //   });
+        return res.data;
+      },
+    });
 
-  //   most Contributorss----->>
+    // most Contributorss----->>
 
   const { data: creators = [], isLoading: contribitsLoading } = useQuery({
     queryKey: ["topCreators"],
@@ -60,14 +59,14 @@ const AdminHome = () => {
   if (lessonsLoading || usersLoading || contribitsLoading) {
     return <Loading></Loading>;
   }
-  console.log(topCreators);
+  
   return (
     <div className="w-11/12 mx-auto my-6 mb-16">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-primary text-center">
         ⭐ Admin Dashboard Overview ⭐
       </h2>
 
-      {/* Cards */}
+      {/* cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Total user */}
         <div className="bg-blue-100 shadow-2xl rounded-xl p-5 flex items-center gap-4">
@@ -91,7 +90,7 @@ const AdminHome = () => {
           </div>
         </div>
 
-        {/* Today's Lessons */}
+        {/* Today Lessons */}
         <div className="bg-purple-100  shadow-2xl rounded-xl p-5 flex items-center gap-4">
           <div className="p-3 bg-white text-purple-600 rounded-full text-xl">
             <MdToday />
@@ -108,7 +107,7 @@ const AdminHome = () => {
           </div>
           <div>
             <p className="text-gray-500 text-sm">Reported Lessons</p>
-            <h3 className="text-2xl font-bold">{999}</h3>
+            <h3 className="text-2xl font-bold">{reports.length}</h3>
           </div>
         </div>
       </div>
@@ -121,7 +120,7 @@ const AdminHome = () => {
           </h3>
           <div className="overflow-x-auto">
             <table className="table text-center">
-              {/* head */}
+             
               <thead>
                 <tr>
                   <th>#</th>
@@ -132,7 +131,7 @@ const AdminHome = () => {
               </thead>
               <tbody>
                 {topCreators.map((creator, index) => {
-                  // Find user in users array
+                  // Find user--->>
                   const userInfo = usersData.find(
                     (u) => u.email === creator._id
                   );

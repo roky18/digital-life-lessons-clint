@@ -2,12 +2,13 @@ import React from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router";
+import Loading from "../Share/Loading";
 
 const FeaturedLessons = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
-  const { data: lessons = [] } = useQuery({
+  const { data: lessons = [], isLoading } = useQuery({
     queryKey: ["featuredLessons"],
     queryFn: async () => {
       const res = await axiosSecure.get("/lessons");
@@ -15,13 +16,15 @@ const FeaturedLessons = () => {
     },
   });
 
+  if (isLoading) return <Loading />;
+
   const latestSix = [...lessons]
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
     .slice(0, 6);
 
   return (
     <div className="w-11/12 mx-auto my-6 mb-16">
-      <h3 className="text-primary flex flex-col md:flex-row items-center text-center font-semibold mb-10 text-3xl">
+      <h3 className="text-primary flex flex-col md:flex-row items-center justify-center  text-center font-semibold mb-10 text-3xl">
         Featured Life Lessons <span className="text-sm ml-2">(Recent 6)</span>
       </h3>
 

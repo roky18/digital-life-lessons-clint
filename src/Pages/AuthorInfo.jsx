@@ -24,7 +24,7 @@ const AuthorInfo = () => {
       return res.data;
     },
   });
-  console.log(lessons);
+ 
   //   favorite
   const { data: favorites = [] } = useQuery({
     queryKey: ["myFavorites", email],
@@ -33,7 +33,7 @@ const AuthorInfo = () => {
       return res.data;
     },
   });
-  console.log(favorites);
+  
 
   return (
     <div className="w-11/12 mx-auto my-8">

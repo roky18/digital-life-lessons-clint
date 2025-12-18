@@ -20,7 +20,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = (data) => {
-    console.log(data);
     setLoginError("");
     signUser(data.email, data.password)
       .then((result) => {
@@ -35,7 +34,6 @@ const Login = () => {
         navigate(location?.state || "/");
       })
       .catch((error) => {
-        console.log(error);
         setLoginError(error.message);
       });
   };

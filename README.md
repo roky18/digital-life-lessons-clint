@@ -1,16 +1,54 @@
-# React + Vite
+# 🌱 Digital Life Lessons
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔗 **Live Site:** https://digital-life-lessons-ef218.web.app
 
-Currently, two official plugins are available:
+## 📖 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Digital Life Lessons is a full-stack web platform where users can create, store, and share meaningful life lessons and personal growth insights. The platform encourages reflection, learning, and modern user experience.
 
-## React Compiler
+Users can create personal lessons, browse public lessons from the community, save favorites, react, comment, and upgrade to a Premium plan to unlock exclusive premium lessons.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Key Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔐 Secure authentication using **Firebase** (Email/Password & Google Login)
+- 📝 Create, update, and delete personal life lessons
+- 🌍 Browse public lessons with
+- 🔒 Premium lessons locked/blurred for Free users with upgrade prompt
+- ⭐ Stripe one-time payment for lifetime Premium access
+- ❤️ Like, comment, favorite, and report lessons in real time
+- 📊 User dashboard with analytics and quick actions
+- 👮 Admin dashboard for managing users, lessons, and reported content
+- 🎨 Fully responsive UI using **Tailwind CSS & DaisyUI**
+
+---
+
+## 🛠️ Technologies Used
+
+### Frontend
+
+- React + Vite
+- React Router DOM
+- Tailwind CSS & DaisyUI
+- TanStack React Query
+- Firebase Authentication
+- Axios
+- SweetAlert2
+
+### Backend
+
+- Node.js & Express.js
+- MongoDB
+- Firebase Admin SDK
+- Stripe Payment Gateway
+
+---
+
+## 👤 Author
+
+**MD RAKIBUL ISLAM ROKY**
+
+---
+
+✨ _Digital Life Lessons — Preserve wisdom. Learn from life. Grow together._

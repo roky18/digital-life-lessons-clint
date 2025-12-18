@@ -54,7 +54,7 @@ const AdminProfile = () => {
 
   const admin = userData.role === "admin";
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <Loading></Loading>;
 
   return (
     <div className="w-11/12 mx-auto my-10">

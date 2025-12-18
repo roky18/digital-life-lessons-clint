@@ -22,7 +22,7 @@ const Register = () => {
   const axiosSecure = useAxiosSecure();
 
   const handleRegister = (data) => {
-    // console.log(data);
+   
     const profileImg = data.photo[0];
 
     registerUser(data.email, data.password)

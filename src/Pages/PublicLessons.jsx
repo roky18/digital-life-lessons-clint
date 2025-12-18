@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router";
 import { FaLock } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
-import { AuthContext } from "../Contexts/AuthContext";
 import useAuth from "../Hooks/useAuth";
 import Loading from "./Share/Loading";
 
@@ -21,7 +20,7 @@ const PublicLessons = () => {
       return res.data;
     },
   });
-  console.log(lessons.access);
+  
 
   // user related-------->>
   const { data: users = [], isLoading: userLoading } = useQuery({
@@ -46,7 +45,7 @@ const PublicLessons = () => {
           Public Lessons : {lessons.length}
         </h3>
 
-        {/* Card Section */}
+        {/* card Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 mb-8 lg:grid-cols-3 gap-8">
           {lessons.map((lesson) => {
             const isPremiumLesson = lesson.access === "premium";

@@ -38,14 +38,14 @@ const MostSavedLessons = () => {
               key={lesson._id}
               className="bg-base-100 hover:bg-purple-100 shadow-lg flex flex-col items-center text-center space-y-3 p-5 rounded-xl overflow-hidden  transition-transform duration-300 ease-in-out hover:scale-105"
             >
-              {/* Image */}
+              {/* image */}
               <img
                 className="w-full h-36 object-cover rounded-xl"
                 src={lesson.image}
                 alt={lesson.title}
               />
 
-              {/* Title */}
+              {/* title */}
               <h4 className="font-semibold text-lg text-pink-600">
                 {lesson.title}
               </h4>
@@ -55,7 +55,7 @@ const MostSavedLessons = () => {
                 {lesson.description?.slice(0, 40)}...
               </p>
 
-              {/* Category*/}
+              {/* category*/}
               <div className="flex gap-16 items-center  font-semibold">
                 <legend className="flex gap-1 items-center text-blue-500">
                   <FaRegBookmark />

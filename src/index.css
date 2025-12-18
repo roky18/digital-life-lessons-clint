@@ -21,3 +21,5 @@ body {
 .active {
   @apply text-primary font-bold;
 }
+
+

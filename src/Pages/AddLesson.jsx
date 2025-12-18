@@ -22,13 +22,13 @@ const AddLesson = () => {
       return res.data;
     },
   });
-  console.log(users);
+ 
 
   const isPremiumUser = users.accessLevel === "premium";
 
   const handleAddLesson = async (data) => {
     try {
-      console.log("lesson Created:", data);
+      
       const result = await Swal.fire({
         title: "Are You Agree with Create Lesson?",
         text: `Your Lesson will be Posting!`,
@@ -101,7 +101,7 @@ const AddLesson = () => {
 
       <div className="bg-base-200 shadow-2xl  py-8 px-12 rounded-2xl space-y-6">
         <form onSubmit={handleSubmit(handleAddLesson)} className="space-y-6">
-          {/* Title */}
+          {/* title */}
           <div className="form-control">
             <label className="text-indigo-700 font-semibold">
               Lesson Title <br />
@@ -126,7 +126,7 @@ const AddLesson = () => {
             ></textarea>
           </div>
 
-          {/* Category */}
+          {/* category */}
           <div className="form-control">
             <label className="font-semibold text-indigo-700">
               Category <br />
@@ -144,7 +144,7 @@ const AddLesson = () => {
             </select>
           </div>
 
-          {/* Tone */}
+          {/* tone */}
           <div className="form-control">
             <label className="font-semibold text-indigo-700">
               Emotional Tone <br />
@@ -161,7 +161,7 @@ const AddLesson = () => {
             </select>
           </div>
 
-          {/* Image */}
+          {/* image */}
           <div className="form-control">
             <label className="font-semibold text-indigo-700 flex items-center gap-2">
               <FaRegImages /> Image

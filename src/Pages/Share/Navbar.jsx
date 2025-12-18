@@ -114,21 +114,25 @@ const Navbar = () => {
                 {user.displayName}
               </li>
 
-              {
-                admin?<li>
-                <button
-                  onClick={() => navigate(`/dashboard/admin/profile/${user.email}`)}
-                >
-                  Profile
-                </button>
-              </li>:<li>
-                <button
-                  onClick={() => navigate(`/dashboard/profile/${user.email}`)}
-                >
-                  Profile
-                </button>
-              </li>
-              }
+              {admin ? (
+                <li>
+                  <button
+                    onClick={() =>
+                      navigate(`/dashboard/admin/profile/${user.email}`)
+                    }
+                  >
+                    Profile
+                  </button>
+                </li>
+              ) : (
+                <li>
+                  <button
+                    onClick={() => navigate(`/dashboard/profile/${user.email}`)}
+                  >
+                    Profile
+                  </button>
+                </li>
+              )}
 
               {admin ? (
                 <li>

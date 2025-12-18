@@ -4,6 +4,7 @@ import {
   MdAssignmentAdd,
   MdFavoriteBorder,
   MdManageAccounts,
+  MdOutlineReportProblem,
   MdPlayLesson,
 } from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router";
@@ -74,7 +75,7 @@ const DashboardLayout = () => {
           <ul className="menu w-full grow">
             <li>
               <Link to="/">
-                <img src={logoimage} alt="" />
+                <img className="w-14" src={logoimage} alt="" />
               </Link>
             </li>
             {/* List item */}
@@ -161,7 +162,19 @@ const DashboardLayout = () => {
                     to="/dashboard/admin/manage-lessons"
                   >
                     <BookUser size={14} />
-                    <span className="is-drawer-close:hidden">Manage Users</span>
+                    <span className="is-drawer-close:hidden">
+                      Manage Lessons
+                    </span>
+                  </NavLink>
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="ReportedLessons"
+                    to="admin/reported-lessons"
+                  >
+                    <MdOutlineReportProblem size={14} />
+                    <span className="is-drawer-close:hidden">
+                      Reported Lessons
+                    </span>
                   </NavLink>
                   <NavLink
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
@@ -169,9 +182,7 @@ const DashboardLayout = () => {
                     to="/dashboard/admin/manage-users"
                   >
                     <MdManageAccounts />
-                    <span className="is-drawer-close:hidden">
-                      Manage Lessons
-                    </span>
+                    <span className="is-drawer-close:hidden">Manage Users</span>
                   </NavLink>
                 </>
               )}

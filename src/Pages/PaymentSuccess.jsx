@@ -2,7 +2,6 @@ import { CheckCircle } from "lucide-react";
 import React, { useEffect } from "react";
 import { Link, useSearchParams } from "react-router";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import Swal from "sweetalert2";
 
 const PaymentSuccess = () => {
   const [params] = useSearchParams();
