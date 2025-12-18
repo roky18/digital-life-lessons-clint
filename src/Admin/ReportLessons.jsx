@@ -51,7 +51,6 @@ const ReportLessons = () => {
       count: grouped[lessonId].length,
     };
   });
- 
 
   const handleDeleteReport = async (id) => {
     const result = await Swal.fire({
@@ -62,7 +61,6 @@ const ReportLessons = () => {
       confirmButtonText: "Yes, Confirm!",
       cancelButtonText: "Cancel",
     });
-   
 
     if (result.isConfirmed) {
       await axiosSecure.delete(`/reports/${id}`);

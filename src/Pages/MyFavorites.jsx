@@ -94,7 +94,14 @@ const MyFavorites = () => {
               {favorites.map((favorite, index) => (
                 <tr key={favorite._id}>
                   <th>{index + 1}</th>
-                  <td>{favorite.title}</td>
+                  <td className="flex mt-5 md:mt-0  items-center gap-2">
+                    <img
+                      className="w-12 h-12 rounded-xl"
+                      src={favorite.image}
+                      alt=""
+                    />
+                    {favorite.title}
+                  </td>
                   <td>
                     <button
                       onClick={() => handleLessonDelete(favorite._id)}

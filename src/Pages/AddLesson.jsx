@@ -9,7 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const AddLesson = () => {
   const { user } = useAuth();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const axiosSecure = useAxiosSecure();
 
@@ -22,13 +22,11 @@ const AddLesson = () => {
       return res.data;
     },
   });
- 
 
   const isPremiumUser = users.accessLevel === "premium";
 
   const handleAddLesson = async (data) => {
     try {
-      
       const result = await Swal.fire({
         title: "Are You Agree with Create Lesson?",
         text: `Your Lesson will be Posting!`,
@@ -87,6 +85,8 @@ const AddLesson = () => {
         showConfirmButton: false,
         timer: 2500,
       });
+
+      reset();
     } catch (error) {
       console.log("ERROR:", error.response?.data);
       Swal.fire("Error", "Please Enter a Image!", "error");

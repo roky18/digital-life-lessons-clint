@@ -20,8 +20,6 @@ const ManageUsers = () => {
     },
   });
 
- 
-
   const users = Array.isArray(usersData) ? usersData : [];
 
   const handleMakeAdmin = async (id) => {
@@ -100,7 +98,14 @@ const ManageUsers = () => {
               {users.map((user, index) => (
                 <tr key={user._id}>
                   <th>{index + 1}</th>
-                  <td>{user.displayName}</td>
+                  <td className="flex mt-5 md:mt-0 mr-4 md-mr-0 items-center gap-2">
+                    <img
+                      className="w-12 h-12 rounded-full"
+                      src={user.photoURL}
+                      alt=""
+                    />
+                    {user.displayName}
+                  </td>
                   <td className="text-sm">{user.email}</td>
                   <td className="text-center">
                     <span

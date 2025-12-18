@@ -86,7 +86,14 @@ const MyLessons = () => {
               {lessons.map((lesson, index) => (
                 <tr key={lesson._id}>
                   <th>{index + 1}</th>
-                  <td>{lesson.title}</td>
+                  <td className="flex mt-5 md:mt-0 items-center gap-2">
+                    <img
+                      className="w-12 h-12 rounded-xl"
+                      src={lesson.image}
+                      alt=""
+                    />
+                    {lesson.title}
+                  </td>
                   <td>{lesson.privacy}</td>
                   <td>{lesson.access}</td>
                   <td>
