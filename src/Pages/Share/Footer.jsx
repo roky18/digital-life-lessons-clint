@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Logo from "./Logo";
 
@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="bg-gray-900 w-12/12 mx-auto text-gray-200 py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
-          <div className="flex flex-col md:flex-row items-center ">
+          <div className="flex flex-col items-center ">
             <Logo></Logo>
             <span className="text-2xl font-semibold">Digital_Life_Lessons</span>
           </div>
@@ -20,19 +20,10 @@ const Footer = () => {
             <p>🏡 Pabna, Bangladesh</p>
           </div>
 
-          <div className="text-sm flex flex-col space-y-1 items-center md:items-end">
-            <a href="" className="hover:underline">
-              Terms & Conditions
-            </a>
-            <a href="" className="hover:underline">
-              Privacy Policy
-            </a>
-          </div>
-
           {/* Social Icons */}
           <div className="flex space-x-4 justify-center md:justify-end">
             <a
-              href="https://facebook.com"
+              href="https://facebook.com/rokymax626"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white"
@@ -40,7 +31,7 @@ const Footer = () => {
               <FaFacebookF size={20} />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://twitter.com/rokymax626"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white"
@@ -48,15 +39,15 @@ const Footer = () => {
               <FaXTwitter size={20} />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://github.com/roky18"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white"
             >
-              <FaInstagram size={20} />
+              <FaGithub size={20} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/roky18"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white"

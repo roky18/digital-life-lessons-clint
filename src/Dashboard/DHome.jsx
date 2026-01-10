@@ -43,12 +43,12 @@ const DHome = () => {
   }
 
   return (
-    <div className="w-11/12 mx-auto my-6 space-y-6">
+    <div className="w-11/12 mx-auto my-6 min-h-screen space-y-6">
        <h2 className="text-2xl md:text-3xl font-bold mb-10 text-primary text-center">
         ⭐ User Dashboard Overview ⭐
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="card bg-purple-100 shadow-md p-4 flex items-center gap-4">
+        <div className="card bg-purple-100 dark:bg-gray-400 shadow-md p-4 flex items-center gap-4">
           <FaBook className="text-4xl text-purple-700" />
           <div>
             <p className="text-sm text-gray-600">Total Lessons created</p>
@@ -56,7 +56,7 @@ const DHome = () => {
           </div>
         </div>
 
-        <div className="card bg-blue-100 shadow-md p-4 flex items-center gap-4">
+        <div className="card bg-blue-100 dark:bg-gray-400 shadow-md p-4 flex items-center gap-4">
           <FaBookmark className="text-4xl text-blue-700" />
           <div>
             <p className="text-sm text-gray-600">Total Saved</p>
@@ -66,7 +66,7 @@ const DHome = () => {
           </div>
         </div>
 
-        <div className="card bg-amber-100 shadow-md p-4 flex items-center gap-4">
+        <div className="card bg-amber-100 dark:bg-gray-400 shadow-md p-4 flex items-center gap-4">
           <FaPlusCircle className="text-4xl text-amber-700" />
           <div>
             <p className="text-sm text-gray-600">Quick Action</p>
@@ -81,8 +81,8 @@ const DHome = () => {
       </div>
 
       {/* Recent Lessons */}
-      <div className="bg-white rounded-xl shadow-md p-6">
-        <h3 className="text-xl font-bold text-purple-700 mb-4">
+      <div className="bg-white dark:bg-gray-600 rounded-xl shadow-md p-6">
+        <h3 className="text-xl font-bold text-primary text-center mb-4">
           Recently Added Lessons
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -92,7 +92,7 @@ const DHome = () => {
           {recentLessons.map((lesson) => (
             <div
               key={lesson._id}
-              className="bg-purple-50 p-4 rounded-lg shadow-sm"
+              className="bg-purple-50 dark:bg-gray-400 p-4 rounded-lg shadow-sm"
             >
               <div className="flex gap-3 items-center">
                 <img
@@ -113,8 +113,8 @@ const DHome = () => {
       </div>
 
       {/* Weekly Section */}
-      <div className="bg-white rounded-xl shadow-md p-6">
-        <h3 className="text-xl font-bold text-purple-700 mb-4">
+      <div className="bg-white dark:bg-gray-400 rounded-xl shadow-md p-6">
+        <h3 className="text-xl font-bold text-primary text-center mb-4">
           Weekly Reflections
         </h3>
         <h1>Up Coming Soon... </h1>

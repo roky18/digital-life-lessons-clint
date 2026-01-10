@@ -76,7 +76,7 @@ const Register = () => {
       });
   };
   return (
-    <div className="card mt-6 bg-amber-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
+    <div className="card mt-6 dark:bg-gray-600 bg-amber-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
       <form className="card-body" onSubmit={handleSubmit(handleRegister)}>
         <p className="text-2xl font-semibold text-emerald-500 text-center">
           Please Register
@@ -87,7 +87,7 @@ const Register = () => {
           <input
             {...register("name", { required: true })}
             type="text"
-            className="input"
+            className="input dark:bg-gray-400"
             placeholder="Your Name"
           />
           {errors.name?.type === "required" && (
@@ -99,7 +99,7 @@ const Register = () => {
           <input
             {...register("email", { required: true })}
             type="email"
-            className="input"
+            className="input dark:bg-gray-400"
             placeholder="Email"
           />
           {errors.email?.type === "required" && (
@@ -111,7 +111,7 @@ const Register = () => {
           <input
             {...register("photo", { required: true })}
             type="file"
-            className="file-input"
+            className="file-input dark:bg-gray-400"
             placeholder="Choose Your Photo"
           />
           {errors.photo && <p className="text-red-500">Photo is required.</p>}
@@ -125,7 +125,7 @@ const Register = () => {
               pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/,
             })}
             type="password"
-            className="input"
+            className="input dark:bg-gray-400"
             placeholder="Password"
           />
           {errors.password?.type === "required" && (

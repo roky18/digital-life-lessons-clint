@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 
 const PaymentCancel = () => {
      return (
-    <div className="min-h-screen flex items-center justify-center bg-red-200 px-4">
-      <div className="max-w-md w-full bg-base-100 shadow-xl rounded-xl p-8 text-center">
+    <div className="min-h-screen flex items-center justify-center dark:bg-black bg-red-200 px-4">
+      <div className="max-w-md w-full dark:bg-gray-400 bg-base-100 shadow-xl rounded-xl p-8 text-center">
         
         <XCircle className="w-20 h-20 text-red-500 mx-auto mb-4" />
 
@@ -13,7 +13,7 @@ const PaymentCancel = () => {
           Payment Canceled
         </h1>
 
-        <p className="text-gray-500 mt-2">
+        <p className="text-gray-500 dark:text-white mt-2">
           Your payment was not completed.  
           If this was a mistake, you can try again anytime.
         </p>

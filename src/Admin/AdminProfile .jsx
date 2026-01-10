@@ -57,7 +57,7 @@ const AdminProfile = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="w-11/12 mx-auto my-10">
+    <div className="w-11/12 min-h-screen mx-auto my-10">
       {/* User info section ---------->>> */}
       <div className="flex flex-col md:flex-row items-center gap-6 mb-10">
         <div className="relative">
@@ -120,9 +120,9 @@ const AdminProfile = () => {
       >
         Your Public Lessons
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {lessons.map((lesson) => (
-          <div key={lesson._id} className="card bg-base-100 shadow-lg">
+          <div key={lesson._id} className="card bg-base-100 dark:bg-gray-400 shadow-lg">
             <img
               src={lesson.image}
               className="w-full h-40 object-cover rounded-t-lg"

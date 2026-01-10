@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <div className="card mt-6 bg-amber-100  w-full mx-auto max-w-sm shrink-0 shadow-2xl">
+    <div className="card mt-6 dark:bg-gray-600 bg-amber-100  w-full mx-auto max-w-sm shrink-0 shadow-2xl">
       <form onSubmit={handleSubmit(handleLogin)} className="card-body">
         <p className="text-2xl font-semibold text-blue-500 text-center">
           Please Login
@@ -50,7 +50,7 @@ const Login = () => {
           <input
             {...register("email", { required: true })}
             type="email"
-            className="input"
+            className="input dark:bg-gray-400"
             placeholder="Email"
           />
           {errors.email?.type === "required" && (
@@ -61,7 +61,7 @@ const Login = () => {
           <input
             {...register("password", { required: true, minLength: 6 })}
             type="password"
-            className="input"
+            className="input dark:bg-gray-400"
             placeholder="Password"
           />
           {errors.password?.type === "minLength" && (

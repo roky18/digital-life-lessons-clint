@@ -71,14 +71,14 @@ const ReportLessons = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto p-4">
+    <div className="w-11/12 min-h-screen mx-auto p-4">
       <h2 className="text-2xl text-primary text-center  font-bold mb-8">
         Reported Lessons
       </h2>
 
       <div className="overflow-x-auto">
-        <table className="table table-zebra">
-          <thead className="bg-gray-100">
+        <table className="table p-5 dark:bg-gray-600">
+          <thead className="bg-gray-100 dark:bg-gray-300">
             <tr>
               <th>#</th>
               <th className="py-2 px-4 text-left">Lesson Title</th>
@@ -117,8 +117,8 @@ const ReportLessons = () => {
 
       {/* Modal */}
       {selectedLesson && (
-        <div className="fixed w-11/12 mx-auto inset-0 bg-gray-100 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white w-full max-w-md rounded shadow-lg p-4">
+        <div className="fixed w-11/12 mx-auto inset-0 bg-gray-100 dark:bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white dark:bg-gray-600 w-full max-w-md rounded shadow-lg p-4">
             <h3 className="text-xl font-semibold mb-3">
               Reports for : {selectedLesson.title}
             </h3>

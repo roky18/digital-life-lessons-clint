@@ -56,7 +56,7 @@ const Profile = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="w-11/12 mx-auto my-10">
+    <div className="w-11/12 min-h-screen mx-auto my-10">
       {/* User info section ---------->>> */}
       <div className="flex flex-col md:flex-row items-center gap-6 mb-10">
         <div className="relative">

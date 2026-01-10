@@ -20,18 +20,18 @@ const PaymentSuccess = () => {
   }, [email, axiosSecure]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-green-200 px-4">
-      <div className="max-w-md w-full bg-base-100 shadow-xl rounded-xl p-8 text-center">
+    <div className="min-h-screen flex items-center justify-center dark:bg-black bg-green-200 px-4">
+      <div className="max-w-md w-full dark:bg-gray-400 bg-base-100 shadow-xl rounded-xl p-8 text-center">
         <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-4" />
 
-        <h1 className="text-3xl font-bold text-green-600">
+        <h1 className="text-3xl font-bold text-green-600 dark:text-green-400">
           Payment Successful!
         </h1>
         <h1 className="text-xl mt-2 font-bold text-blue-600">
           🌼🌻 Congratulations! 🌻🌼
         </h1>
 
-        <p className="text-gray-600 mt-2">
+        <p className="text-gray-600 dark:text-white mt-2">
           Thank you for your payment. Your premium access has been activated
           successfully ✔✔.
         </p>

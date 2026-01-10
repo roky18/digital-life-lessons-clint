@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router";
@@ -6,6 +6,7 @@ import { FaLock } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
 import useAuth from "../Hooks/useAuth";
 import Loading from "./Share/Loading";
+import SearchSort from "./Share/SearchSort";
 
 const PublicLessons = () => {
   const axiosSecure = useAxiosSecure();
@@ -15,12 +16,16 @@ const PublicLessons = () => {
   const { data: lessons = [], isLoading: lessonsLoading } = useQuery({
     queryKey: ["publicLessons"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/lessons/${lessons}`);
+      const res = await axiosSecure.get(`/lessons`);
 
       return res.data;
     },
   });
-  
+
+  const [filteredLessons, setFilteredLessons] = useState([]);
+  useEffect(() => {
+    setFilteredLessons(lessons);
+  }, [lessons]);
 
   // user related-------->>
   const { data: users = [], isLoading: userLoading } = useQuery({
@@ -40,21 +45,31 @@ const PublicLessons = () => {
 
   return (
     <Fade cascade damping={0.3} triggerOnce>
-      <div className="w-11/12 mx-auto">
+      <div className="w-11/12 mx-auto mt-10">
         <h3 className="text-primary text-center font-semibold my-6 mb-10 text-3xl">
           Public Lessons : {lessons.length}
         </h3>
 
+        {/* Search & Sort Sec */}
+        <SearchSort
+          lessons={lessons}
+          setFilteredLessons={setFilteredLessons}
+        ></SearchSort>
+
+        <p className="text-sm text-gray-500 text-end mr-2 mb-4">
+          Showing {filteredLessons.length} of {lessons.length}
+        </p>
+
         {/* card Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 mb-8 lg:grid-cols-3 gap-8">
-          {lessons.map((lesson) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 mb-8 lg:grid-cols-4 gap-8">
+          {filteredLessons.map((lesson) => {
             const isPremiumLesson = lesson.access === "premium";
             const locked = isPremiumLesson && !isPremiumUser;
 
             return (
               <div
                 key={lesson._id}
-                className="card bg-base-100 shadow-xl  relative overflow-hidden"
+                className="card bg-base-100 dark:bg-gray-400 dark:hover:bg-purple-100 dark:hover:text-black shadow-xl  relative overflow-hidden"
               >
                 {/* premium lessons */}
                 {locked && (

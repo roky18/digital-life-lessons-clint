@@ -121,19 +121,23 @@ const LessonDetails = () => {
     access === "premium" && users.accessLevel !== "premium";
 
   return (
-    <div className="w-11/12 mx-auto my-8">
-      <section className="relative p-6 shadow-2xl bg-amber-100 py-8 rounded-2xl">
+    <div className="w-11/12 md:w-6/12 mx-auto my-8">
+      <section className="relative p-6 shadow-2xl bg-amber-100 dark:bg-gray-400 py-8 rounded-2xl">
         {/* title */}
         <div className="text-center mb-6">
           <h1 className="text-3xl font-bold text-purple-700">{title}</h1>
-          <p className="text-sm mt-2 text-gray-600">
+          <p className="text-sm mt-2 dark:text-black text-gray-600">
             Category:{" "}
-            <span className="font-semibold text-lime-600">{category}</span> •
-            Tone:
-            <span className="font-semibold text-orange-600">{tone}</span>
+            <span className="font-semibold dark:text-black text-lime-600">
+              {category}
+            </span>{" "}
+            • Tone:
+            <span className="font-semibold text-orange-600 dark:text-black">
+              {tone}
+            </span>
           </p>
 
-          <p className="text-gray-500 text-sm mt-1">
+          <p className="text-gray-500 dark:text-black text-sm mt-1">
             Created: {new Date(createdAt).toLocaleDateString()}
           </p>
         </div>
@@ -152,12 +156,12 @@ const LessonDetails = () => {
           }`}
         >
           {/* Description */}
-          <div className="bg-white p-6 rounded-xl shadow-md mb-2 leading-relaxed">
-            <p className="text-gray-800 whitespace-pre-line">{description}</p>
+          <div className="bg-white dark:bg-gray-600  p-6 rounded-xl shadow-md mb-2 leading-relaxed">
+            <p className="text-gray-800 dark:text-white whitespace-pre-line">{description}</p>
           </div>
 
           {/* Author */}
-          <div className="bg-white rounded-xl p-5 shadow-md">
+          <div className="bg-white dark:bg-gray-600 rounded-xl p-5 shadow-md">
             <h3 className="text-xl font-bold text-purple-700 mb-2">Author</h3>
 
             <div className="flex items-center gap-4">
@@ -181,7 +185,7 @@ const LessonDetails = () => {
           </div>
 
           {/* engaement */}
-          <div className="bg-white my-2 rounded-2xl p-4 shadow-md text-center">
+          <div className="bg-white dark:bg-gray-600 my-2 rounded-2xl p-4 shadow-md text-center">
             <h3 className="text-lg font-bold mb-3">Engagement</h3>
 
             <div className="flex flex-col md:flex-row justify-center gap-6 text-xl">
@@ -209,14 +213,14 @@ const LessonDetails = () => {
                 </span>
               </button>
 
-              <button className="btn btn-ghost bg-green-100 text-green-600">
+              <button className="btn btn-ghost bg-green-100 dark:bg-gray-600 text-green-600">
                 <FaShareAlt />
                 <span className="text-sm"></span>
               </button>
 
               <button
                 onClick={handleReport}
-                className="btn btn-ghost bg-orange-100 text-red-600"
+                className="btn btn-ghost dark:bg-gray-600 bg-orange-100 text-red-600"
               >
                 <MessageSquareWarning size={18} />
                 <span className="text-sm"></span>
@@ -225,7 +229,7 @@ const LessonDetails = () => {
           </div>
 
           {/* comments */}
-          <div className="bg-white rounded-2xl pt-3 p-6 shadow-md">
+          <div className="bg-white dark:bg-gray-600 rounded-2xl pt-3 p-6 shadow-md">
             <h3 className="text-xl font-bold text-purple-700 mb-3">
               Comments ({comments.length})
             </h3>

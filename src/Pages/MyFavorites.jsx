@@ -69,18 +69,13 @@ const MyFavorites = () => {
 
   return (
     <Fade cascade damping={0.3} triggerOnce>
-      <div className="w-11/12 mx-auto mb-8 py-5 shadow-2xl">
+      <div className="w-11/12 min-h-screen mx-auto mb-8 py-5 shadow-2xl">
         <h3 className="text-primary text-center font-semibold my-6 mb-10 text-3xl">
           MY Favorite : {favorites.length}
         </h3>
-        <div className="flex justify-end">
-          <button className="btn btn-info w-2/10 mr-4 ">
-            <IoFilter />
-            Filter
-          </button>
-        </div>
+
         <div className="overflow-x-auto">
-          <table className="table text-center table-zebra">
+          <table className="table text-center dark:bg-gray-600">
             {/* head */}
             <thead>
               <tr className="text-purple-400">

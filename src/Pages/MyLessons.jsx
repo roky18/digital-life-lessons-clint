@@ -11,7 +11,6 @@ import {
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiFillLike } from "react-icons/ai";
 import Swal from "sweetalert2";
-import { Link } from "lucide-react";
 import { useNavigate } from "react-router";
 import { Fade } from "react-awesome-reveal";
 import Loading from "./Share/Loading";
@@ -64,12 +63,12 @@ const MyLessons = () => {
   }
   return (
     <Fade cascade damping={0.3} triggerOnce>
-      <div className="w-11/12 mx-auto mb-8 py-5 shadow-2xl">
+      <div className="w-11/12 min-h-screen mx-auto mb-8 py-5 shadow-2xl">
         <h3 className="text-primary text-center font-semibold my-6 mb-10 text-3xl">
           All of my Lessons : {lessons.length}
         </h3>
         <div className="overflow-x-auto">
-          <table className="table text-center table-zebra">
+          <table className="table p-5 dark:bg-gray-700 text-center">
             {/* head */}
             <thead>
               <tr className="text-purple-400">
@@ -127,7 +126,7 @@ const MyLessons = () => {
                     <div className="flex flex-col md:flex-row gap-2">
                       <button
                         onClick={() => navigate(`update-lesson/${lesson._id}`)}
-                        className="btn btn-dash btn-warning"
+                        className="btn btn-dash text-pink-400"
                       >
                         <MdEditSquare />{" "}
                       </button>

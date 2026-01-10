@@ -76,15 +76,15 @@ const ManageUsers = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="w-11/12 mx-auto my-6 mb-16">
+    <div className="w-11/12 min-h-screen mx-auto my-6 mb-16">
       <h2 className="text-2xl font-bold text-primary mb-6 text-center">
         Manage Users
       </h2>
 
       {users.length > 0 ? (
         <div className="overflow-x-auto rounded-lg shadow">
-          <table className="table table-zebra w-full">
-            <thead className="bg-base-200">
+          <table className="table p-5 dark:bg-gray-600 w-full">
+            <thead className="bg-base-200 dark:bg-gray-300">
               <tr>
                 <th>#</th>
                 <th>Name</th>

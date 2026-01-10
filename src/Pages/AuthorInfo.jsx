@@ -36,7 +36,7 @@ const AuthorInfo = () => {
   
 
   return (
-    <div className="w-11/12 mx-auto my-8">
+    <div className="w-11/12 mx-auto dark:bg-gray-600 p-4 my-8">
       {/* Author Profile */}
       <div className="flex flex-col md:flex-row items-center gap-6 mb-10">
         <div className="relative">
@@ -83,11 +83,11 @@ const AuthorInfo = () => {
       {/* Lessons List */}
       <h2 className="text-2xl text-center font-bold text-purple-700 mb-4">
         Lessons by :{" "}
-        <span className="text-blue-600">{author.displayName}...</span>
+        <span className="text-blue-600 dark:text-primary">{author.displayName}...</span>
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {lessons.map((lesson) => (
-          <div key={lesson._id} className="card bg-base-100 shadow-lg">
+          <div key={lesson._id} className="card bg-base-100 dark:bg-gray-400 shadow-lg">
             <img
               src={lesson.image}
               className="w-full h-40 object-cover rounded-t-lg"

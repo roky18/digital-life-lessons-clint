@@ -28,12 +28,12 @@ const FeaturedLessons = () => {
         Featured Life Lessons <span className="text-sm ml-2">(Recent 6)</span>
       </h3>
 
-      <div className="p-10 shadow-2xl bg-lime-50 rounded-2xl ">
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="p-10 shadow-2xl rounded-2xl ">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {latestSix.map((lesson) => (
             <div
               key={lesson._id}
-              className="bg-base-100 hover:bg-amber-100 shadow-lg flex flex-col items-center text-center space-y-3 p-5 rounded-xl overflow-hidden  transition-transform duration-300 ease-in-out hover:scale-105"
+              className="bg-base-100 dark:bg-gray-400 hover:bg-amber-100 dark:hover:bg-purple-100 dark:hover:text-black shadow-lg flex flex-col items-center text-center space-y-3 p-5 rounded-xl overflow-hidden  transition-transform duration-300 ease-in-out hover:scale-105"
             >
               {/* Image */}
               <img

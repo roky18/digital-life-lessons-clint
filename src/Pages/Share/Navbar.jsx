@@ -4,8 +4,11 @@ import Logo from "./Logo";
 import useAuth from "../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
+  const { theme, setTheme } = useTheme();
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
@@ -55,7 +58,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar dark:bg-gray-800 bg-base-100 shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -77,7 +80,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 dark:bg-gray-900 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {Links}
           </ul>
@@ -90,6 +93,16 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{Links}</ul>
       </div>
       <div className="navbar-end">
+        <button
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="text-lg mr-2 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 transition"
+        >
+          {theme === "dark" ? (
+            <FaSun className="w-2 h-2" />
+          ) : (
+            <FaMoon className="w-2 h-2" />
+          )}
+        </button>
         {user ? (
           <div className="dropdown dropdown-end">
             <div
@@ -108,7 +121,7 @@ const Navbar = () => {
 
             <ul
               tabIndex={0}
-              className="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-xl w-52"
+              className="menu dropdown-content mt-3 p-2 shadow dark:bg-gray-900 bg-base-100 rounded-xl w-52"
             >
               <li className="font-semibold text-center py-2">
                 {user.displayName}
@@ -156,10 +169,16 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex gap-2">
-            <Link className="btn btn-primary" to="/login">
+            <Link
+              className="btn btn-outline btn-primary dark:text-white"
+              to="/login"
+            >
               Login
             </Link>
-            <Link className="btn btn-outline btn-accent" to="/register">
+            <Link
+              className="btn btn-outline btn-primary dark:text-white"
+              to="/register"
+            >
               Signup
             </Link>
           </div>

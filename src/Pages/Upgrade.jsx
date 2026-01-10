@@ -16,13 +16,13 @@ const Upgrade = () => {
   }
 
   return (
-    <div className="w-11/12 mx-auto mb-10">
+    <div className="w-11/12 mx-auto min-h-screen mb-10">
       <h3 className="text-primary text-center font-semibold my-6 mb-10 text-3xl">
         Upgrade
       </h3>
 
       <div className="overflow-x-auto">
-        <table className="table table-zebra text-center">
+        <table className="table dark:bg-gray-600 text-center">
           <thead>
             <tr className="font-semibold text-purple-400">
               <th>#</th>

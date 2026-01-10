@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { FaBookOpen,  FaFlag, FaUsers } from "react-icons/fa";
+import { FaBookOpen, FaFlag, FaUsers } from "react-icons/fa";
 import { MdToday } from "react-icons/md";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
@@ -32,17 +32,17 @@ const AdminHome = () => {
       return Array.isArray(res.data) ? res.data : [];
     },
   });
-    // total report -->
-    const { data: reports = [] } = useQuery({
-      queryKey: ["reports"],
-      queryFn: async () => {
-        const res = await axiosSecure.get(`/reports`);
+  // total report -->
+  const { data: reports = [] } = useQuery({
+    queryKey: ["reports"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/reports`);
 
-        return res.data;
-      },
-    });
+      return res.data;
+    },
+  });
 
-    // most Contributorss----->>
+  // most Contributorss----->>
 
   const { data: creators = [], isLoading: contribitsLoading } = useQuery({
     queryKey: ["topCreators"],
@@ -59,7 +59,7 @@ const AdminHome = () => {
   if (lessonsLoading || usersLoading || contribitsLoading) {
     return <Loading></Loading>;
   }
-  
+
   return (
     <div className="w-11/12 mx-auto my-6 mb-16">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-primary text-center">
@@ -69,44 +69,50 @@ const AdminHome = () => {
       {/* cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Total user */}
-        <div className="bg-blue-100 shadow-2xl rounded-xl p-5 flex items-center gap-4">
+        <div className="bg-blue-100 dark:bg-gray-500  shadow-2xl rounded-xl p-5 flex items-center gap-4">
           <div className="p-3 bg-white text-blue-600 rounded-full text-xl">
             <FaUsers />
           </div>
           <div>
-            <p className="text-gray-500 text-sm">Total Users</p>
+            <p className="text-gray-500 dark:text-white text-sm">Total Users</p>
             <h3 className="text-2xl font-bold">{usersData.length}</h3>
           </div>
         </div>
 
         {/* Total lessons */}
-        <div className="bg-green-100 shadow-2xl rounded-xl p-5 flex items-center gap-4">
+        <div className="bg-green-100 dark:bg-gray-500 shadow-2xl rounded-xl p-5 flex items-center gap-4">
           <div className="p-3 bg-white text-green-600 rounded-full text-xl">
             <FaBookOpen />
           </div>
           <div>
-            <p className="text-gray-500 text-sm">Public Lessons</p>
+            <p className="text-gray-500 dark:text-white text-sm">
+              Public Lessons
+            </p>
             <h3 className="text-2xl font-bold">{lessons.length}</h3>
           </div>
         </div>
 
         {/* Today Lessons */}
-        <div className="bg-purple-100  shadow-2xl rounded-xl p-5 flex items-center gap-4">
+        <div className="bg-purple-100 dark:bg-gray-500 shadow-2xl rounded-xl p-5 flex items-center gap-4">
           <div className="p-3 bg-white text-purple-600 rounded-full text-xl">
             <MdToday />
           </div>
           <div>
-            <p className="text-gray-500 text-sm">Today's Lessons</p>
+            <p className="text-gray-500 dark:text-white text-sm">
+              Today's Lessons
+            </p>
             <h3 className="text-2xl font-bold">{todayLessons.length}</h3>
           </div>
         </div>
         {/* Reported lessons */}
-        <div className="bg-red-100 shadow-2xl rounded-xl p-5 flex items-center gap-4">
+        <div className="bg-red-100 dark:bg-gray-500 shadow-2xl rounded-xl p-5 flex items-center gap-4">
           <div className="p-3 bg-white text-red-600 rounded-full text-xl">
             <FaFlag />
           </div>
           <div>
-            <p className="text-gray-500 text-sm">Reported Lessons</p>
+            <p className="text-gray-500 dark:text-white text-sm">
+              Reported Lessons
+            </p>
             <h3 className="text-2xl font-bold">{reports.length}</h3>
           </div>
         </div>
@@ -114,13 +120,12 @@ const AdminHome = () => {
 
       <div className=" mt-8">
         {/* Most Active Contributors */}
-        <div className="bg-gray-100  shadow-2xl rounded-xl p-6">
-          <h3 className="text-lg text-center text-fuchsia-600 font-semibold mb-4">
+        <div className="bg-gray-100 dark:bg-gray-500 dark:text-white shadow-2xl rounded-xl p-6">
+          <h3 className="text-lg text-center text-primary font-semibold mb-4">
             ⭐ Most Active Contributors
           </h3>
           <div className="overflow-x-auto">
             <table className="table text-center">
-             
               <thead>
                 <tr>
                   <th>#</th>
@@ -153,7 +158,7 @@ const AdminHome = () => {
                             </div>
                           </div>
                           <div>
-                            <div className="font-bold text-blue-500">
+                            <div className="font-bold text-blue-500 dark:text-white">
                               {creator.name}
                             </div>
                           </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
@@ -18,6 +18,30 @@ const ManageLessons = () => {
       const res = await axiosSecure.get("/lessons");
       return res.data;
     },
+  });
+
+  // State for search and filter
+  const [searchText, setSearchText] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all"); // all / reviewed / pending
+
+  if (isLoading) return <Loading />;
+
+  // Filter lessons
+  const filteredLessons = lessons.filter((lesson) => {
+    // Search title + creator + status
+    const searchMatch =
+      lesson.title.toLowerCase().includes(searchText.toLowerCase()) ||
+      lesson.lessonerName.toLowerCase().includes(searchText.toLowerCase()) ||
+      (lesson.reviewed ? "reviewed" : "pending").includes(
+        searchText.toLowerCase()
+      );
+
+    // Status filter
+    let statusMatch = true;
+    if (statusFilter === "Public") statusMatch = lesson.privacy === "public";
+    if (statusFilter === "Private") statusMatch = lesson.privacy === "private";
+
+    return searchMatch && statusMatch;
   });
 
   const handleDeleteLesson = async (id) => {
@@ -54,12 +78,35 @@ const ManageLessons = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="w-11/12 mx-auto my-6 mb-16">
-      <h2 className="text-2xl font-bold mb-6 text-center">Manage Lessons</h2>
+    <div className="w-11/12 min-h-screen mx-auto my-6 mb-16">
+      <h2 className="text-2xl font-bold mb-6 text-center">
+        Manage Lessons ({filteredLessons.length}/{lessons.length})
+      </h2>
+
+      {/* Search & Filter */}
+      <div className="flex my-15 gap-4 mb-6 justify-end">
+        <input
+          type="text"
+          placeholder="Search lessons..."
+          className="input dark:bg-gray-600 input-bordered w-64"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+
+        <select
+          className="select dark:bg-gray-600 select-bordered w-40"
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+        >
+          <option value="all">All</option>
+          <option value="Public">Public</option>
+          <option value="Private">Private</option>
+        </select>
+      </div>
 
       <div className="overflow-x-auto rounded-lg shadow-lg">
-        <table className="table text-center table-zebra w-full">
-          <thead className="bg-base-200">
+        <table className="table text-center dark:bg-gray-600 p-4 w-full">
+          <thead className="bg-base-200 dark:bg-gray-300">
             <tr>
               <th>#</th>
               <th>Lesson Title</th>
@@ -71,8 +118,8 @@ const ManageLessons = () => {
           </thead>
 
           <tbody>
-            {lessons.length > 0 ? (
-              lessons.map((lesson, index) => (
+            {filteredLessons.length > 0 ? (
+              filteredLessons.map((lesson, index) => (
                 <tr key={lesson._id}>
                   <th>{index + 1}</th>
                   <td className="flex mt-5 md:mt-0  items-center gap-2">
@@ -90,7 +137,7 @@ const ManageLessons = () => {
                       <span className="badge badge-success">Public</span>
                     )}
                     {lesson.privacy === "private" && (
-                      <span className="badge badge-warning">Private</span>
+                      <span className="badge badge-error">Private</span>
                     )}
                   </td>
                   <td className="text-center">
