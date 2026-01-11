@@ -7,25 +7,37 @@ import baner3 from "../../assets/banner3.jpg";
 
 const Banner = () => {
   return (
-    <div>
-      <Carousel
-        className="w-11/12 mx-auto my-6"
-        autoPlay={true}
-        infiniteLoop={true}
-      >
-        <div>
-          <img src={baner2} />
-          <p className="legend">Digital Life Lessons 1</p>
-        </div>
-        <div>
-          <img src={baner1} />
-          <p className="legend">Digital Life Lessons 2</p>
-        </div>
-        <div>
-          <img src={baner3} />
-          <p className="legend">Digital Life Lessons 3</p>
-        </div>
-      </Carousel>
+    <div className="w-full flex justify-center my-6">
+      <div className="w-full md:w-4/5">
+        <Carousel
+          autoPlay={true}
+          infiniteLoop={true}
+          showThumbs={false}
+          showStatus={false}
+        >
+          <div>
+            <img
+              src={baner2}
+              className="w-full h-[60vh] object-cover rounded-xl"
+            />
+            <p className="legend">Digital Life Lessons 1</p>
+          </div>
+          <div>
+            <img
+              src={baner1}
+              className="w-full h-[60vh] object-cover rounded-xl"
+            />
+            <p className="legend">Digital Life Lessons 2</p>
+          </div>
+          <div>
+            <img
+              src={baner3}
+              className="w-full h-[60vh] object-cover rounded-xl"
+            />
+            <p className="legend">Digital Life Lessons 3</p>
+          </div>
+        </Carousel>
+      </div>
     </div>
   );
 };

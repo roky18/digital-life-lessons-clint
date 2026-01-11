@@ -23,7 +23,7 @@ const FeaturedLessons = () => {
     .slice(0, 6);
 
   return (
-    <div className="w-11/12 mx-auto my-6 mb-16">
+    <div className="w-11/12 mx-auto my-10 mb-16">
       <h3 className="text-primary flex flex-col md:flex-row items-center justify-center  text-center font-semibold mb-10 text-3xl">
         Featured Life Lessons <span className="text-sm ml-2">(Recent 6)</span>
       </h3>

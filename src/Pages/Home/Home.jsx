@@ -5,6 +5,9 @@ import WhyLearning from "./WhyLearning";
 import MostSavedLessons from "./MostSavedLessons";
 import { Fade } from "react-awesome-reveal";
 import MostCreateLessons from "./MostCreateLessons";
+import PlatformStats from "./PlatformStats";
+import MostLikedLessons from "./MostLikedLessons";
+import JoinPremium from "./JoinPremium";
 
 const Home = () => {
   return (
@@ -15,6 +18,9 @@ const Home = () => {
         <WhyLearning></WhyLearning>
         <MostSavedLessons></MostSavedLessons>
         <MostCreateLessons></MostCreateLessons>
+        <PlatformStats></PlatformStats>
+        <MostLikedLessons></MostLikedLessons>
+        <JoinPremium></JoinPremium>
       </Fade>
     </div>
   );
