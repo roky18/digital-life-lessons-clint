@@ -3,7 +3,8 @@ import React from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { Link, useNavigate } from "react-router";
 import { FaRegBookmark, FaRegHeart } from "react-icons/fa";
-import Loading from "../Share/Loading";
+
+import LessonSkeleton from "../Share/LessonSkeleton";
 
 const MostSavedLessons = () => {
   const axiosSecure = useAxiosSecure();
@@ -22,7 +23,21 @@ const MostSavedLessons = () => {
     .slice(0, 5);
 
   if (isLoading) {
-    return <Loading></Loading>;
+    return (
+      <div className="w-11/12 mx-auto my-10 mb-16">
+        <h3 className="text-primary text-center font-semibold mb-10 text-3xl">
+          Most Saved Lessons <span className="text-sm ml-2">(Recent 5)</span>
+        </h3>
+
+        <div className="p-10 shadow-2xl rounded-2xl ">
+          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[...Array(5)].map((_, index) => (
+              <LessonSkeleton key={index} />
+            ))}
+          </section>
+        </div>
+      </div>
+    );
   }
 
   return (

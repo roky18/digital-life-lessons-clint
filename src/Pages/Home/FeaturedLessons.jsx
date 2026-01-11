@@ -2,7 +2,7 @@ import React from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router";
-import Loading from "../Share/Loading";
+import LessonSkeleton from "../Share/LessonSkeleton";
 
 const FeaturedLessons = () => {
   const axiosSecure = useAxiosSecure();
@@ -16,7 +16,22 @@ const FeaturedLessons = () => {
     },
   });
 
-  if (isLoading) return <Loading />;
+  if (isLoading)
+    return (
+      <div className="w-11/12 mx-auto my-10 mb-16">
+        <h3 className="text-primary text-center font-semibold mb-10 text-3xl">
+          Featured Life Lessons <span className="text-sm ml-2">(Recent 6)</span>
+        </h3>
+
+        <div className="p-10 shadow-2xl rounded-2xl ">
+          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[...Array(6)].map((_, index) => (
+              <LessonSkeleton key={index} />
+            ))}
+          </section>
+        </div>
+      </div>
+    );
 
   const latestSix = [...lessons]
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))

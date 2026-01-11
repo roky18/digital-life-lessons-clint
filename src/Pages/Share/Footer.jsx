@@ -15,7 +15,7 @@ const Footer = () => {
 
           <div className="text-sm space-y-1 text-center md:text-left">
             <p>Contact Us:</p>
-            <p>📞 +880 1712345678</p>
+            <p>📞 +880 1727020930</p>
             <p>📩 roky18bd@gmail.com</p>
             <p>🏡 Pabna, Bangladesh</p>
           </div>

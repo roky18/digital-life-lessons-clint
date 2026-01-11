@@ -7,6 +7,7 @@ import { Fade } from "react-awesome-reveal";
 import useAuth from "../Hooks/useAuth";
 import Loading from "./Share/Loading";
 import SearchSort from "./Share/SearchSort";
+import LessonSkeleton from "./Share/LessonSkeleton";
 
 const PublicLessons = () => {
   const axiosSecure = useAxiosSecure();
@@ -38,7 +39,18 @@ const PublicLessons = () => {
   });
 
   if (lessonsLoading || userLoading) {
-    return <Loading></Loading>;
+   return (
+    <div className="w-11/12 mx-auto mt-10">
+      <h3 className="text-primary text-center font-semibold my-6 mb-10 text-3xl">
+        Public Lessons Loading...
+      </h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {[...Array(8)].map((_, idx) => (
+          <LessonSkeleton key={idx} />
+        ))}
+      </div>
+    </div>
+  );
   }
 
   const isPremiumUser = users.accessLevel === "premium";
