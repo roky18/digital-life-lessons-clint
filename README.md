@@ -52,9 +52,13 @@ Follow these steps to run the frontend locally:
 1. **Clone the Repo:** `https://github.com/roky18/digital-life-lessons-clint.git`
 2. **Install dependencies:** `npm install`
 3. **Environment Variables:** Create a `.env.local` file and add:
-   ```env
+ ```env
    VITE_apiKey=your_api_key
    VITE_authDomain=your_auth_domain
+   VITE_projectId=your_project_id
+   VITE_storageBucket=your_storage_bucket
+   VITE_messagingSenderId=your_messaging_id
+   VITE_appId=your_app_id
    VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_public_key
 
 ## 👤 Author
