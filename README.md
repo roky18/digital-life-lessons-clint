@@ -60,7 +60,7 @@ Follow these steps to run the frontend locally:
    VITE_messagingSenderId=your_messaging_id
    VITE_appId=your_app_id
    VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_public_key
-
+```
 ## 👤 Author
 
 **MD RAKIBUL ISLAM ROKY**
