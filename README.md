@@ -49,7 +49,7 @@ Users can create personal lessons, browse public lessons from the community, sav
 
 Follow these steps to run the frontend locally:
 
-1. **Clone the Repo:** `git clone https://github.com/roky18/digital-life-lessons.git`
+1. **Clone the Repo:** `https://github.com/roky18/digital-life-lessons-clint.git`
 2. **Install dependencies:** `npm install`
 3. **Environment Variables:** Create a `.env.local` file and add:
    ```env
