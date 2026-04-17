@@ -45,6 +45,18 @@ Users can create personal lessons, browse public lessons from the community, sav
 
 ---
 
+## ⚙️ Client Side Setup (Frontend)
+
+Follow these steps to run the frontend locally:
+
+1. **Clone the Repo:** `git clone https://github.com/roky18/digital-life-lessons.git`
+2. **Install dependencies:** `npm install`
+3. **Environment Variables:** Create a `.env.local` file and add:
+   ```env
+   VITE_apiKey=your_api_key
+   VITE_authDomain=your_auth_domain
+   VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_public_key
+
 ## 👤 Author
 
 **MD RAKIBUL ISLAM ROKY**
