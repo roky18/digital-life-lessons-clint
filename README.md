@@ -65,7 +65,9 @@ Follow these steps to run the frontend locally:
 ## 👤 Author
 
 **MD RAKIBUL ISLAM ROKY**
-
+- ** Email: roky18bd@gmail.com
+- ** LinkedIn: https://linkedin.com/in/roky18
+- ** 📞 Mobile: +8801727020930
 ---
 
 ✨ _Digital Life Lessons — Preserve wisdom. Learn from life. Grow together._
