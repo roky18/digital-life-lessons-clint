@@ -61,6 +61,7 @@ Follow these steps to run the frontend locally:
    VITE_appId=your_app_id
    VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_public_key
 ```
+4. **Run the App:** `npm run dev`
 ## 👤 Author
 
 **MD RAKIBUL ISLAM ROKY**
